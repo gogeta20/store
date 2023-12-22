@@ -1,0 +1,73 @@
+version: "3.1"
+services:
+  www:
+    container_name: backend
+    build:
+      dockerfile: dockerfiles/backend/Dockerfile
+      context: .
+    ports:
+      - "80:80"
+    volumes:
+      - ../project/backend:/var/www/html
+      - ../project/shared:/var/www/shared
+      - ../project/conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ../project/conf/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      - ../project/conf/ports.conf:/etc/apache2/ports.conf
+      # - ../project/shared/original/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      # - ../project/shared/original/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      # - ../project/conf/hosts:/etc/hosts
+    links:
+      - db
+    networks:
+      - default
+  db:
+    container_name: db
+    image: mysql
+    ports:
+      - "3308:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: dbname
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+    volumes:
+      - ../project/dump:/docker-entrypoint-initdb.d
+      - ../conf:/etc/mysql/conf.d
+      - persistent:/var/lib/mysql
+    networks:
+      - default
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db:db
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+  frontend:
+    container_name: frontend
+    # image:  node:18-alpine
+    # image: node:20.9.0-alpine
+    # image: node:20.9.0-slim
+    image: node:20.9.0-alpine
+    restart: unless-stopped
+    # env_file: .env
+    working_dir: /app
+    #entrypoint: /bin/sh
+    # stdin_open: true
+    command: "/usr/local/bin/npm run dev"
+    #CMD [ "npm", "run", "dev" ]
+    # tty: true
+    volumes:
+      - ../project/front:/app
+    ports:
+      # - "3000:3000"
+      - "5173:5173"
+    networks:
+      - default
+
+volumes:
+  persistent:
