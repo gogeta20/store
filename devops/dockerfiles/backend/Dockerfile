@@ -16,6 +16,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install zip
 
+RUN mkdir -p /var/www/html/var/cache
+
+RUN chown -R www-data:www-data /var/www/html/var/cache && \
+    chmod -R 775 /var/www/html/var/cache
+
+
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install gd
