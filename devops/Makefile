@@ -15,6 +15,9 @@ help: ## Muestra la ayuda de los objetivos disponibles
 back:
 	docker exec -it backend /bin/bash
 
+phpmyadmin:
+	docker exec -it phpmyadmin /bin/bash
+
 user:
 	docker exec -u 1000 -it backend /bin/bash
 #backend:													## Enter php-fpm container
@@ -22,6 +25,9 @@ user:
 
 frontend:
 	@docker-compose exec frontend sh
+
+db:
+	docker exec -it db /bin/bash
 
 up:
 	docker compose up -d
@@ -50,8 +56,27 @@ build:
 log-front:
 	docker logs frontend
 
+log-phpmyadmin:
+	docker logs phpmyadmin
+
 log-back:
 	docker logs backend
 
 restart-apache:
 	docker exec backend sh -c "service apache2 restart"
+
+f ?= default
+.PHONY: db-update
+
+db-update: ## Ejecuta la suite. make db-update f=secondupdate
+	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
+
+
+#db-update:
+#	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/mySql.sql"'
+#
+#file: CMD=$(f)
+#.PHONY: db-update
+#db-update: ## Ejecuta la suite. make db-update f=secondupdate
+#	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(s).sql"'
+

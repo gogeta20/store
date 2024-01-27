@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Test\Check;
+namespace App\Main\Application\Test\Check;
 
 use App\Shared\Domain\Interfaces\TranslateInterfaceCustom;
 
@@ -17,6 +17,6 @@ final class AvisosGetAll
 
     public function __invoke(AvisosGetAllQuery $query): array
     {
-        return ["name"=>'mauricio'];
+        return ["name"=>'check'];
     }
 }

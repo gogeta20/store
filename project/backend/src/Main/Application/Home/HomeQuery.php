@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Test\Check;
+namespace App\Main\Application\Home;
 
 use App\Shared\Domain\Bus\Query\Query;
 
-class AvisosGetAllQuery implements Query
+class HomeQuery implements Query
 {
     public function __construct()
     {

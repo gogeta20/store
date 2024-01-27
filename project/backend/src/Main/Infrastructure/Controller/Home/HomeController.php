@@ -1,25 +1,21 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Main\Infrastructure\Controller\Home;
 
-namespace App\Controller\Health;
-
-use App\Application\Test\Check\AvisosGetAllQuery;
+use App\Main\Application\Home\HomeQuery;
 use App\Shared\Domain\BaseResponse;
-use App\Shared\Domain\Bus\Query\Response;
 use App\Shared\Domain\StandardApiResponse;
 use App\Shared\Infrastructure\Symfony\ApiController;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-
-class CheckController extends ApiController
+class HomeController extends ApiController
 {
     public function __invoke(): JsonResponse
     {
         /** @var BaseResponse $response */
         $response = $this->ask(
-            new AvisosGetAllQuery()
+            new HomeQuery()
         );
 
         return (new StandardApiResponse(

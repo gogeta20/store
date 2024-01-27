@@ -7,19 +7,25 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+DROP DATABASE IF EXISTS mau; CREATE DATABASE mau;
+USE mau;
 
-CREATE TABLE `Person` (
+CREATE TABLE `Personas` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `Person` (`id`, `name`) VALUES
-(1, 'William'),
-(2, 'Marc'),
-(3, 'John'),
-(4, 'Antonio Moreno');
+INSERT INTO `Personas` (`id`, `name`) VALUES
+(1, 'Mauricio'),
+(2, 'Vargas'),
+(3, 'Mendoza'),
+(4, 'Segovia'),
+(5, 'algo');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+# CREATE DATABASE db_store_mvm1 CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;

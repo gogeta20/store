@@ -3,9 +3,10 @@
 #        path: ../src/Controller/
 #        namespace: App\Controller
 #    type: attribute
-app:
+main:
   resource:
-    '../src/Shared/Infrastructure/Routing/routing.xml'
+    '../src/Main/Infrastructure/Routing/routing.xml'
+#    '../src/Shared/Infrastructure/Routing/routing.xml'
 
 #index:
 #  path: /mau

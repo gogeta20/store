@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Test\Check;
+namespace App\Main\Application\Test\Check;
 
 use App\Shared\Domain\BaseResponse;
 use App\Shared\Domain\Bus\Query\QueryHandler;
