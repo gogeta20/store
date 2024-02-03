@@ -38,6 +38,15 @@
 
 <script setup>
 useHead({
-  title: "Home",
+  title: 'Home',
 });
+
+const response = await http.get('check');
+console.log(response, 'http');
+// const api = useApi();
+
+// const { data } = await api({
+//   method: 'get',
+//   url: '/check',
+// });
 </script>

@@ -14,7 +14,7 @@ help: ## Muestra la ayuda de los objetivos disponibles
 up:
 	docker compose up -d
 
-down:
+down: # Para eliminar los contenedores, redes, volumenes y imágenes
 	docker compose down
 
 stop:
@@ -34,7 +34,7 @@ restart-docker:
 back:
 	docker exec -it backend /bin/bash
 
-user:
+user-back:
 	docker exec -u 1000 -it backend /bin/bash
 
 cache:
@@ -60,8 +60,17 @@ log-phpmyadmin:
 frontend:
 	@docker-compose exec frontend sh
 
+packages-front:
+	@docker-compose exec frontend sh -c "chown -R node:node node_modules/"
+
+user-front:
+	docker exec -u node -it frontend sh
+
 log-front:
 	docker logs frontend
+
+# front-dev:
+# 	docker exec frontend sh -c "npm run dev"
 
 #========================================
 db:
@@ -70,7 +79,7 @@ db:
 f ?= default
 .PHONY: db-update
 
-db-update: ## Ejecuta la suite. make db-update f=secondupdate
+db-update:
 	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
 
 #========================================
