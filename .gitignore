@@ -11,6 +11,8 @@
 **/vendor/**
 **/sessions/**
 **/logs/**
+**/node_modules/**
+**/.nuxt/**
 
 #.phpunit
 #.phpunit.result.cache
