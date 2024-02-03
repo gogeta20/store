@@ -1,5 +1,6 @@
 <template>
   <h1>Aprendiendo Nuxt</h1>
+  <h3>{{ $t('hello', { name: 'vue-i18n' }) }}</h3>
   <img src="/img/nuxt.svg" alt="SVG de Nuxt.js" />
 
   <p>
