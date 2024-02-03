@@ -11,12 +11,75 @@ help: ## Muestra la ayuda de los objetivos disponibles
 		print "    " substr($$0, 5) \
 	} ' $(MAKEFILE_LIST)
 
+up:
+	docker compose up -d
+
+down: # Para eliminar los contenedores, redes, volumenes y imágenes
+	docker compose down
+
+stop:
+	docker compose stop
+
+restart:
+	docker compose restart
+
+build:
+	docker compose build
+
+restart-docker:
+	sudo service docker restart
+
+#========================================
 .PHONY: enter-php-container
 back:
 	docker exec -it backend /bin/bash
 
-#backend:													## Enter php-fpm container
-#	@docker-compose exec www /bin/bash
+user-back:
+	docker exec -u 1000 -it backend /bin/bash
 
+cache:
+	docker exec backend sh -c "php bin/console cache:clear"
+
+router:
+	docker exec backend sh -c "php bin/console debug:router"
+
+log-back:
+	docker logs backend
+
+restart-apache:
+	docker exec backend sh -c "service apache2 restart"
+
+#========================================
+phpmyadmin:
+	docker exec -it phpmyadmin /bin/bash
+
+log-phpmyadmin:
+	docker logs phpmyadmin
+
+#========================================
 frontend:
 	@docker-compose exec frontend sh
+
+packages-front:
+	@docker-compose exec frontend sh -c "chown -R node:node node_modules/"
+
+user-front:
+	docker exec -u node -it frontend sh
+
+log-front:
+	docker logs frontend
+
+# front-dev:
+# 	docker exec frontend sh -c "npm run dev"
+
+#========================================
+db:
+	docker exec -it db /bin/bash
+
+f ?= default
+.PHONY: db-update
+
+db-update:
+	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
+
+#========================================
