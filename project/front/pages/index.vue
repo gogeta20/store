@@ -1,40 +1,58 @@
 <template>
-  <h1>Aprendiendo Nuxt</h1>
-  <h3>{{ $t('hello', { name: 'vue-i18n' }) }}</h3>
-  <img src="/img/nuxt.svg" alt="SVG de Nuxt.js" />
+  <section class="mt-5 mb-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1>Bienvenidos a Refugio Perruno</h1>
+        <h3>Cuidado y Compromiso Animal</h3>
+      </div>
+      <div class="mb-5">
+        <h2>Nuestro Compromiso:</h2>
+        <p>En Refugio Perruno, estamos dedicados a fomentar el bienestar y la felicidad de todas las mascotas. Creemos en la importancia de crear conexiones significativas entre humanos y animales, y nuestro compromiso se refleja en cada aspecto de nuestra plataforma.</p>
+      </div>
 
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis natus
-    itaque, officia eius amet eum possimus enim nisi, inventore odit magni
-    aspernatur cumque atque expedita beatae modi, temporibus a animi! Cupiditate
-    eligendi explicabo neque, temporibus placeat libero, pariatur dolor
-    doloribus fuga totam facilis incidunt obcaecati aperiam expedita natus magni
-    mollitia ipsum sed qui officiis iure provident quasi doloremque ad? Dolore?
-    Magnam, animi! Repellat incidunt quae nostrum facilis temporibus ipsum,
-    delectus rerum numquam voluptas itaque laborum doloribus adipisci cupiditate
-    nobis cumque ex quisquam veniam, excepturi tenetur iste vel. Dolorum,
-    repellat ut. Ducimus inventore beatae delectus numquam facilis accusantium,
-    et doloribus. Quaerat earum ducimus recusandae ullam. Atque ratione placeat,
-    non sit amet labore possimus natus velit ipsum quis aut aliquam facere
-    ipsam. Ea quasi inventore dicta a? Vero atque repudiandae nostrum dolore
-    eveniet quos aperiam mollitia maiores voluptas sapiente! Vero dolorum quis
-    illum optio suscipit veritatis consequatur magnam error, officiis neque
-    laudantium? Quaerat sit unde placeat maxime velit quod perferendis
-    distinctio deserunt? Sequi, quibusdam sunt? Minima odit, nisi maiores nobis
-    et expedita aspernatur culpa ipsam reprehenderit ipsum exercitationem
-    dolorem iure voluptas fugiat! Saepe nisi aut rerum adipisci similique ut
-    nulla corrupti obcaecati voluptatum inventore, nobis id optio at! Magni vero
-    nisi illo quam eos possimus suscipit voluptatibus, facere at minus sapiente
-    beatae. Eum error quaerat quisquam, officia harum iste? Id adipisci ducimus
-    et laudantium ut quam. Facere rerum quasi ipsa consequuntur quo error
-    facilis, deleniti vitae corrupti. Earum praesentium ut nostrum ducimus?
-    Facilis vero delectus sunt quam nulla obcaecati atque doloribus minus odio,
-    temporibus magni eos quae ad illum vel odit molestias, non cupiditate et
-    quasi, asperiores repudiandae ex nihil inventore? Delectus. Commodi eos
-    alias sequi molestias error consectetur nulla? Eius cum, eaque, fugit
-    delectus doloribus tenetur iste rem facilis fugiat ratione accusantium
-    voluptates deserunt earum maxime dolorem. Nulla quia ullam voluptas.
-  </p>
+      <div class="mb-5 d-flex">
+        <img src="/img/vue.svg" alt="Descripción de la imagen" class="me-5 d-none d-sm-block">
+        <div class="p-4">
+          <h2>Supervisión Veterinaria:</h2>
+          <p>Para garantizar la más alta calidad de información y cuidado, Refugio Perruno está supervisado por un equipo de profesionales veterinarios comprometidos con la salud y el bienestar animal. Su experiencia y conocimientos respaldan cada artículo y consejo que compartimos.</p>
+        </div>
+      </div>
+
+      <div class="mb-5 d-flex">
+        <div class="p-4">
+          <h2>Salud Animal:</h2>
+          <p>En nuestra sección dedicada a la salud animal, abordamos temas vitales para el bienestar de tus mascotas. Desde consejos preventivos hasta información sobre enfermedades comunes, nuestro objetivo es proporcionar recursos valiosos que ayuden a mantener a tus peludos amigos saludables y felices.</p>
+        </div>
+        <img src="/img/vue.svg" alt="Descripción de la imagen" class="ms-5 d-none d-sm-block">
+      </div>
+
+      <div class="mb-5 d-flex">
+        <img src="/img/vue.svg" alt="Descripción de la imagen" class="me-5 d-none d-sm-block">
+        <div class="p-4">
+          <h2>Alimentación Consciente:</h2>
+          <p>La alimentación es una parte fundamental de la vida de cualquier mascota. En Refugio Perruno, nos esforzamos por ofrecer orientación sobre dietas equilibradas, recomendaciones de alimentos de calidad y consejos nutricionales para asegurarnos de que tus amigos peludos reciban la nutrición adecuada.</p>
+        </div>
+      </div>
+
+      <div class="mb-5 d-flex">
+        <div class="p-4">
+          <h2>Educación Canina:</h2>
+          <p>Los perros son seres inteligentes y leales que se benefician enormemente de una educación adecuada. En nuestra sección de educación canina, proporcionamos información sobre entrenamiento positivo, socialización y actividades que fortalecen el vínculo entre humanos y caninos.</p>
+        </div>
+        <img src="/img/vue.svg" alt="Descripción de la imagen" class="ms-5 d-none d-sm-block">
+      </div>
+
+      <div class="mb-5 d-flex">
+        <img src="/img/vue.svg" alt="Descripción de la imagen" class="me-5 d-none d-sm-block">
+        <div class="p-4">
+          <h2>Nuestro Compromiso Continúa:</h2>
+          <p>Refugio Perruno es más que una fuente de información; es una comunidad comprometida con el cuidado y la felicidad de los animales. Únete a nosotros mientras exploramos juntos el maravilloso mundo de las mascotas y trabajamos para construir un futuro más saludable y feliz para ellos.
+            ¡Gracias por confiar en Refugio Perruno como tu recurso de confianza para el cuidado de tus mascotas!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>

@@ -79,7 +79,7 @@ db:
 f ?= default
 .PHONY: db-update
 
-db-update:
+db-update: #make db-update f=mySql
 	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
 
 #========================================
