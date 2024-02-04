@@ -1,9 +1,29 @@
+<script setup>
+import {articlesHomeApp} from "~/src/home/application/Get/articlesHomeApp";
+useHead({
+  title: 'Home',
+});
+
+const response = await articlesHomeApp().get();
+
+console.log(response, 'http');
+// const api = useApi();
+
+// const { data } = await api({
+//   method: 'get',
+//   url: '/check',
+// });
+</script>
 <template>
   <section class="mt-5 mb-5">
     <div class="container">
       <div class="text-center mb-5">
         <h1>Bienvenidos a Refugio Perruno</h1>
         <h3>Cuidado y Compromiso Animal</h3>
+      </div>
+
+      <div>
+        <p>{{ response }}</p>
       </div>
       <div class="mb-5">
         <h2>Nuestro Compromiso:</h2>
@@ -54,18 +74,3 @@
     </div>
   </section>
 </template>
-
-<script setup>
-useHead({
-  title: 'Home',
-});
-
-const response = await http.get('check');
-console.log(response, 'http');
-// const api = useApi();
-
-// const { data } = await api({
-//   method: 'get',
-//   url: '/check',
-// });
-</script>

@@ -3,6 +3,7 @@
 namespace App\Main\Infrastructure\Controller\Home;
 
 use App\Main\Application\Home\HomeQuery;
+use App\Main\Domain\Exception\StoreException;
 use App\Shared\Domain\BaseResponse;
 use App\Shared\Domain\StandardApiResponse;
 use App\Shared\Infrastructure\Symfony\ApiController;
@@ -28,7 +29,8 @@ class HomeController extends ApiController
     protected function exceptions(): array
     {
         return [
-            Exception::class => 500,
+            StoreException::class => 500,
+            Exception::class => 503,
         ];
     }
 }

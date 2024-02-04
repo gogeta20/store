@@ -49,6 +49,9 @@ log-back:
 restart-apache:
 	docker exec backend sh -c "service apache2 restart"
 
+chown-config: #make chown-config file=doctrine.yaml
+	docker exec backend sh -c "chown -R www-data:www-data /var/www/html/$(file)"
+
 #========================================
 phpmyadmin:
 	docker exec -it phpmyadmin /bin/bash

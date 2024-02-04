@@ -7,7 +7,7 @@ namespace App\Shared\Domain\Interfaces;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 
-interface MontesDoctrineRepositoryInterface
+interface BaseRepositoryInterface
 {
 
     public function repository(string $entityClass): EntityRepository;

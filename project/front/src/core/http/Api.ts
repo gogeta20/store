@@ -75,7 +75,7 @@ const injectToken = (config: InternalAxiosRequestConfig): InternalAxiosRequestCo
 //   });
 // };
 
-class Http {
+class Api {
   readonly #apiClient = axios.create(axiosConfig);
   constructor() {
     this.#apiClient.interceptors.request.use(injectToken, (error: unknown) =>
@@ -83,12 +83,12 @@ class Http {
     );
     this.#apiClient.interceptors.response.use(
       (response) => {
-        Http.handleStates(response);
+          Api.handleStates(response);
         return response;
       },
       (error) => {
         const { response } = error;
-        return Http.handleError(response);
+        return Api.handleError(response);
       }
     );
   }
@@ -230,4 +230,4 @@ class Http {
   }
 }
 
-export const http = new Http();
+export const api = new Api();

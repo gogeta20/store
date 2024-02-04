@@ -4,19 +4,17 @@ declare(strict_types=1);
 
 namespace App\Main\Application\Home;
 
-use App\Shared\Domain\Interfaces\TranslateInterfaceCustom;
+use App\Main\Domain\Repository\Interfaces\BaseSearch;
 
-final class Home
+final readonly class Home
 {
 
     public function __construct(
-        protected TranslateInterfaceCustom $translatorCustom,
-    )
-    {
-    }
+        private BaseSearch $baseSearch,
+    ) {}
 
     public function __invoke(HomeQuery $query): array
     {
-        return ["name"=>'home'];
+        return $this->baseSearch->search();
     }
 }

@@ -16,23 +16,17 @@ class AppException extends Exception
     public function __construct(
         string               $message = '',
         int                  $code = 0,
-        Exception|Error|bool $exception = false
+        Throwable $exception = null
     ) {
-        if ($exception) {
-            if (method_exists($exception, 'getMessage')) {
-                $message = sprintf('%s', $exception->getMessage());
-            }
-            if ($code > 0 && method_exists($exception, 'getCode')) {
-                $code = $exception->getCode();
-            }
-            if (method_exists($exception, 'getPrevious')) {
-                $previous = $exception->getPrevious();
-            }
+        if ($exception !== null) {
+            $code = $exception->getCode();
+            $previous = $exception->getPrevious();
         }
         if ($message !== '') {
-            $message = preg_replace('/(Exception:\s)+/', '', sprintf('%s', $message));
+            $message = preg_replace('/(Exception:\s)+/', '', $message);
+        } else if ($exception !== null){
+            $message = $exception->getMessage();
         }
-//        throw $exception($message, $code, ($exception instanceof Exception) ? $exception : null);
-        parent::__construct($message, $code, ($exception instanceof Exception) ? $exception : null);
+        parent::__construct($message, $code, $exception);
     }
 }
