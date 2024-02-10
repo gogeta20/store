@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Main\Application\Test\Check;
+namespace App\Main\Application\UseCases\Querys\Test\Check;
 
+use App\Main\Domain\UseCases\Query\Test\AvisosGetAll;
 use App\Shared\Domain\BaseResponse;
 use App\Shared\Domain\Bus\Query\QueryHandler;
 use App\Shared\Domain\Interfaces\TranslateInterfaceCustom;

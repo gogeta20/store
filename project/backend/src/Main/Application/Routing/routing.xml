@@ -7,14 +7,14 @@
             id="home"
             path="/"
             methods="GET"
-            controller="App\Main\Infrastructure\Controller\Home\HomeController">
+            controller="App\Main\Application\Controller\Home\HomeController">
     </route>
 
     <route
             id="check"
             path="/check"
             methods="GET"
-            controller="App\Main\Infrastructure\Controller\Health\CheckController">
+            controller="App\Main\Application\Controller\Health\CheckController">
     </route>
 
 </routes>

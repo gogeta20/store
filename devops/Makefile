@@ -1,5 +1,8 @@
-# Makefile
+USER=1000
 
+
+
+#========================================
 .PHONY: help
 help: ## Muestra la ayuda de los objetivos disponibles
 	@echo "Uso: make [objetivo]"
@@ -35,7 +38,7 @@ back:
 	docker exec -it backend /bin/bash
 
 user-back:
-	docker exec -u 1000 -it backend /bin/bash
+	docker exec -u $(USER) -it backend /bin/bash
 
 cache:
 	docker exec backend sh -c "php bin/console cache:clear"

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Main\Application\Home;
+namespace App\Main\Application\UseCases\Querys\Home;
 
+use App\Main\Domain\UseCases\Query\Home;
 use App\Shared\Domain\BaseResponse;
 use App\Shared\Domain\Bus\Query\QueryHandler;
 use App\Shared\Domain\Interfaces\TranslateInterfaceCustom;

@@ -4,10 +4,10 @@ namespace App\Main\Infrastructure\Storage\Doctrine\Home;
 
 use App\Main\Domain\Exception\StoreException;
 use App\Main\Domain\Model\TblImagen;
-use App\Main\Domain\Repository\Interfaces\BaseSearch;
+use App\Main\Domain\Repository\Interfaces\HomeInterface;
 use App\Shared\Infrastructure\BaseDoctrine;
 
-class HomeRepository extends BaseDoctrine implements BaseSearch
+class HomeRepository extends BaseDoctrine implements HomeInterface
 {
     /**
      * @throws StoreException
