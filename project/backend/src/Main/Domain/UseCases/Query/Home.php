@@ -16,7 +16,6 @@ final readonly class Home
 
     public function __invoke(HomeQuery $query): array
     {
-        $data =  $this->baseSearch->search();
-        return  $data;
+        return $this->baseSearch->search();
     }
 }

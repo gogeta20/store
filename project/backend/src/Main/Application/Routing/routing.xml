@@ -17,4 +17,11 @@
             controller="App\Main\Application\Controller\Health\CheckController">
     </route>
 
+    <route
+            id="faker"
+            path="/faker"
+            methods="POST"
+            controller="App\Main\Application\Controller\Health\FakerController">
+    </route>
+
 </routes>
