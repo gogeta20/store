@@ -1,22 +1,24 @@
 <?php
-declare(strict_types=1);
-namespace App\Main\Application\Controller\Home;
 
-use App\Main\Application\UseCases\Querys\Home\HomeQuery;
-use App\Main\Domain\Exception\StoreException;
+declare(strict_types=1);
+
+namespace App\Main\Application\Controller\Security;
+
+use App\Main\Application\UseCases\Querys\Security\LoginBasicQuery;
 use App\Shared\Domain\BaseResponse;
 use App\Shared\Domain\StandardApiResponse;
 use App\Shared\Infrastructure\Symfony\ApiController;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class HomeController extends ApiController
+
+class LoginBasicController extends ApiController
 {
     public function __invoke(): JsonResponse
     {
         /** @var BaseResponse $response */
         $response = $this->ask(
-            new HomeQuery()
+            new LoginBasicQuery()
         );
 
         return (new StandardApiResponse(
@@ -29,8 +31,7 @@ class HomeController extends ApiController
     protected function exceptions(): array
     {
         return [
-            StoreException::class => 500,
-            Exception::class => 503,
+            Exception::class => 500,
         ];
     }
 }

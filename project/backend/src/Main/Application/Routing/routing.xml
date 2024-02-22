@@ -24,4 +24,11 @@
             controller="App\Main\Application\Controller\Health\FakerController">
     </route>
 
+    <route
+            id="login_basic"
+            path="/login"
+            methods="POST"
+            controller="App\Main\Application\Controller\Security\LoginBasicController">
+    </route>
+
 </routes>

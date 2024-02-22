@@ -1,6 +1,6 @@
 <?php  declare(strict_types=1);
 
-namespace App\Main\Infrastructure\Storage\Repository\Home;
+namespace App\Main\Infrastructure\Repository\Home;
 
 use App\Main\Domain\Exception\StoreException;
 use App\Main\Domain\Model\TblImagen;
