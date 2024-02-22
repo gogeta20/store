@@ -1,6 +1,6 @@
 <?php  declare(strict_types=1);
 
-namespace App\Main\Infrastructure\Storage\Doctrine\Faker;
+namespace App\Main\Infrastructure\Repository\Faker;
 
 use App\Main\Domain\Exception\StoreException;
 use App\Main\Domain\Model\TblArticulo;
@@ -13,7 +13,7 @@ use App\Main\Domain\Repository\Interfaces\Health\FakerInterface;
 use App\Shared\Infrastructure\BaseDoctrine;
 use Faker\Factory;
 
-class EntityFaker extends BaseDoctrine implements FakerInterface
+class EntityFakerRepository extends BaseDoctrine implements FakerInterface
 {
     /**
      * @throws StoreException
