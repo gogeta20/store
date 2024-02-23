@@ -64,7 +64,7 @@ log-phpmyadmin:
 
 #========================================
 frontend:
-	@docker-compose exec frontend sh
+	docker exec -it frontend sh
 
 packages-front:
 	@docker-compose exec frontend sh -c "chown -R node:node node_modules/"

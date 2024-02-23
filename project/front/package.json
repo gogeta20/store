@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
-    "nuxt": "^3.9.3",
+    "nuxt": "^3.10.3",
     "sass": "^1.49.10",
     "sass-loader": "^12.4.0",
     "vue-i18n": "^9.9.1"
