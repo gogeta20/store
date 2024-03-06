@@ -1,7 +1,7 @@
 <template>
-  <footer class="mt-5 bg-dark text-white p-5">
+  <!-- <footer class="mt-5 bg-dark text-white p-5">
     &copy; Yirsis Serrano - {{ currentYear }}
-  </footer>
+  </footer> -->
 </template>
 
 <script setup>
@@ -10,8 +10,9 @@ const currentYear = new Date().getUTCFullYear();
 
 <style scoped>
 footer {
-  position: absolute;
+  background-color: aqua;
+  /* position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 100%; */
 }
 </style>

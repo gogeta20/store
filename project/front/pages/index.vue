@@ -1,5 +1,6 @@
 <script setup>
 import { articlesHomeApp } from '~/src/home/application/Get/articlesHomeApp';
+
 useHead({
   title: 'Home',
 });
@@ -25,6 +26,10 @@ console.log(response, 'http');
       <div>
         <i class="bi bi-alarm"></i>
         <p>{{ response }}</p>
+        <div class="m-5">
+          <div class="btn btn-success">Success</div>
+          <i class="bi bi-bell"></i>
+        </div>
       </div>
       <div class="mb-5">
         <h2>Nuestro Compromiso:</h2>
