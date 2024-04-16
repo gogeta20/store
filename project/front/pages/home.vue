@@ -2,6 +2,31 @@
 const iconMenu = ref('bi bi-list');
 const listMenu = ref('listMenuHidden');
 const name = ref(true);
+const listName = ['projects', 'experience', 'study', 'info', 'contact','projectspc', 'experiencepc', 'studypc', 'infopc', 'contactpc'];
+const showProjectList = ref(true);
+const showExperienceList = ref(false);
+const showStudyList = ref(false);
+const showInfoList = ref(false);
+const showContactList = ref(false);
+const showProjectListPc = ref(false);
+const showExperienceListPc = ref(false);
+const showStudyListPc = ref(false);
+const showInfoListPc = ref(false);
+const showContactListPc = ref(false);
+let widthMovil = ref(false);
+const listStates = {
+  projects: showProjectList,
+  experience: showExperienceList,
+  study: showStudyList,
+  info: showInfoList,
+  contact: showContactList,
+  projectspc: showProjectListPc,
+  experiencepc: showExperienceListPc,
+  studypc: showStudyListPc,
+  infopc: showInfoListPc,
+  contactpc: showContactListPc,
+};
+let idSection = 'projects' ;
 const showList = async () => {
   iconMenu.value =
     iconMenu.value === 'bi bi-list' ? 'bi bi-x-square' : 'bi bi-list';
@@ -11,35 +36,10 @@ const showList = async () => {
 
   name.value = !name.value;
 };
-const showProjectList = ref(true);
-const showExperienceList = ref(false);
-const showStudyList = ref(false);
-const showInfoList = ref(false);
-const showContactList = ref(false);
 
 const showItemList = (event: MouseEvent) => {
-  const id = event.target.id;
-  const listName = ['projects', 'experience', 'study', 'info', 'contact'];
-  const listStates = {
-    projects: showProjectList,
-    experience: showExperienceList,
-    study: showStudyList,
-    info: showInfoList,
-    contact: showContactList,
-  };
-  for (let item of listName) {
-    listStates[item].value = false;
-    let listItem = document.getElementById(item);
-    listItem?.classList.remove('selected-item');
-  }
-
-  // Check if the listStates includes the id
-  if (id in listStates) {
-    listStates[id].value = true;
-    let selectedListItem = document.getElementById(id);
-    selectedListItem?.classList.add('selected-item');
-  }
-  
+  widthMovil.value =  window.innerWidth <= 600;
+  idSection = event.target.id;
   if (event.type === 'click') {
     let div_movil = document.getElementById('menuCategory');
     let navbarTogglerDemo01 = document.getElementById('navbarTogglerDemo01');
@@ -48,7 +48,28 @@ const showItemList = (event: MouseEvent) => {
     btn_movil[0].ariaExpanded = false;
     navbarTogglerDemo01.className = 'navbar-collapse collapse';
   }
+
+  for (let item of listName) {
+    listStates[item].value = false;
+    let listItem = document.getElementById(item);
+    listItem?.classList.remove('selected-item');
+
+  }
+  // Check if the listStates includes the id
+ let selectedListItem = null
+  console.log("test",idSection,listStates);
+  if (idSection in listStates) {
+    listStates[idSection].value = true;
+    selectedListItem = document.getElementById(idSection);
+    selectedListItem?.classList.add('selected-item');
+  }
 };
+
+function widthSmallResolve () {
+  console.log("test",window.innerWidth);
+  widthMovil.value =  window.innerWidth < 600  ;
+};
+watch(widthMovil, widthSmallResolve);
 </script>
 <template>
   <div class="bd-subnavbar">
@@ -71,20 +92,20 @@ const showItemList = (event: MouseEvent) => {
             <a href="https://github.com/gogeta20" target="_blank">
               <i class="bi bi-github"></i>
             </a>
-            <a
-              href="https://www.linkedin.com/in/mauricio-vargas-18336a1b8/"
-              target="_blank"
-            >
+            <a href="https://www.linkedin.com/in/mauricio-vargas-18336a1b8/" target="_blank">
               <i class="bi bi-linkedin"></i>
             </a>
           </div>
         </div>
-        <div v-else class="d-flex flex-row kode-mono">
+<!--     -->
+<!--     -->
+        <div v-else class="container-principal kode-mono">
+<!--    menu movil  -->
           <div class="list-category-movil">
             <nav class="navbar navbar-expand-lg" id="menuCategory">
               <div class="container-fluid">
                 <button
-                  class="navbar-toggler"
+                  class="navbar-toggler btn-cv1"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#navbarTogglerDemo01"
@@ -95,7 +116,7 @@ const showItemList = (event: MouseEvent) => {
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="listItemsMenuMovil">
                     <li id="projects" v-on:click="showItemList">Projectos</li>
                     <li id="experience" v-on:click="showItemList">
                       Experiencia
@@ -109,18 +130,20 @@ const showItemList = (event: MouseEvent) => {
             </nav>
           </div>
 
+<!--    menu pc  -->
           <div class="col-4 list-category-container">
             <ul id="menuCategory" class="list-category">
-              <li id="projects" v-on:mouseover="showItemList">Projectos</li>
-              <li id="experience" v-on:mouseover="showItemList">Experiencia</li>
-              <li id="study" v-on:mouseover="showItemList">Estudios</li>
-              <li id="info" v-on:mouseover="showItemList">Info</li>
-              <li id="contact" v-on:mouseover="showItemList">Contacto</li>
+              <li id="projectspc" v-on:mouseover="showItemList">Projectos</li>
+              <li id="experiencepc" v-on:mouseover="showItemList">Experiencia</li>
+              <li id="studypc" v-on:mouseover="showItemList">Estudios</li>
+              <li id="infopc" v-on:mouseover="showItemList">Info</li>
+              <li id="contactpc" v-on:mouseover="showItemList">Contacto</li>
             </ul>
           </div>
 
           <div class="col-8">
-            <ul id="listProjects" class="list-items" v-show="showProjectList">
+            <h2 id="title-projects" v-bind:class="{ hidden: !widthMovil || idSection !== 'projects'}">Projectos</h2>
+            <ul id="listProjects" class="list-items" v-show=" showProjectList || showProjectListPc">
               <li class="projectItem btn-three">
                 <div class="name-project">ApoloArte</div>
                 <div class="info">Codigo a medida para Wordpress</div>
@@ -167,11 +190,8 @@ const showItemList = (event: MouseEvent) => {
             <!--  -->
             <!--  -->
             <!--  -->
-            <ul
-              id="listExperience"
-              class="list-items list-experience"
-              v-show="showExperienceList"
-            >
+            <h2 id="title-experience" v-bind:class="{ hidden: !widthMovil || idSection !== 'experience' }">Experiencia</h2>
+            <ul id="listExperience" class="list-items list-experience" v-show="showExperienceList || showExperienceListPc">
               <li class="projectItem btn-three">
                 <div class="d-flex flex-column work">
                   <p class="name-work">Tci Galicia</p>
@@ -217,7 +237,8 @@ const showItemList = (event: MouseEvent) => {
             <!--  -->
             <!--  -->
             <!--  -->
-            <ul id="listStudy" class="list-study" v-show="showStudyList">
+            <h2 id="title-study" v-bind:class="{ hidden: !widthMovil || idSection !== 'study' }">Estudios</h2>
+            <ul id="listStudy" class="list-study" v-show="showStudyList || showStudyListPc">
               <li class="projectItem btn-three">
                 <div class="pb-2">Ciclo Sup. DAM</div>
               </li>
@@ -259,7 +280,8 @@ const showItemList = (event: MouseEvent) => {
             <!--  -->
             <!--  -->
             <!--  -->
-            <ul id="listInfo" class="list-item-info" v-show="showInfoList">
+            <h2 id="title-info" v-bind:class="{ hidden: !widthMovil || idSection !== 'info' }">Info</h2>
+            <ul id="listInfo" class="list-item-info" v-show="showInfoList || showInfoListPc">
               <p>
                 ¡Hola! Soy alguien que aprecia el silencio y asiste
                 religiosamente al gimnasio.
@@ -283,7 +305,8 @@ const showItemList = (event: MouseEvent) => {
             <!--  -->
             <!--  -->
             <!--  -->
-            <ul id="listContact" class="list-items" v-show="showContactList">
+            <h2 id="title-contact" v-bind:class="{ hidden: !widthMovil || idSection !== 'contact' }">Contacto</h2>
+            <ul id="listContact" class="list-items" v-show="showContactList || showContactListPc">
               <div class="mb-5">
                 <p>Puedes contactarme por linkedink</p>
                 <p>te dejo mi perfil</p>
@@ -327,6 +350,9 @@ const showItemList = (event: MouseEvent) => {
 </template>
 
 <style>
+.hidden{
+  display: none !important;
+}
 .icons-social {
   font-size: 1.5rem;
 }
@@ -1085,6 +1111,27 @@ const showItemList = (event: MouseEvent) => {
     1197px 1611px #fff, 1455px 22px #fff, 1526px 368px #fff;
 }
 
+.container-principal{
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-cv1{
+  color: white;
+  box-shadow: 0 0 0 white;
+}
+
+.btn-cv1:focus{
+  color: white;
+  box-shadow: 0 0 0 1px white;
+}
+
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 1px white;
+}
+
 #title {
   position: absolute;
   top: 40%;
@@ -1109,12 +1156,28 @@ const showItemList = (event: MouseEvent) => {
 }
 @media (max-width: 600px) {
   /* Estilos */
+  .container-principal{
+    display: block;
+  }
   .list-category-container {
     display: none;
   }
   .list-category-movil {
     font-size: 2rem;
   }
+  #title {
+    top: 15%;
+  }
+  .list-category-movil {
+    font-size: 1.3rem;
+  }
+  #listItemsMenuMovil{
+    padding-top: 1rem;
+  }
+  #listItemsMenuMovil li{
+    padding-top: 1rem;
+  }
+
 }
 
 /* Small devices (retratos de tabletas y teléfonos de gran tamaño, 601px - 900px) */
