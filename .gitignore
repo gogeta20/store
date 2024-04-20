@@ -11,8 +11,14 @@
 **/vendor/**
 **/sessions/**
 **/logs/**
+**/zips/**
+**.zip
+
+#front
 **/node_modules/**
 **/.nuxt/**
+**dist
+**/.output/**
 
 
 #.phpunit

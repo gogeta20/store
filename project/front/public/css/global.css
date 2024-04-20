@@ -5,10 +5,18 @@ body {
   background-color: aqua !important;
 }
 
-.kode-mono {
+.kode-mono-regular {
+  font-family: 'Kode Mono', monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: none;
+  line-height: initial;
+}
+.kode-mono-bold {
   font-family: 'Kode Mono', monospace;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
 }
 .bd-subnavbar {
@@ -19,3 +27,5 @@ body {
   color: white;
   font-size: 2rem;
 }
+
+
