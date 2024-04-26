@@ -5,12 +5,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Kode+Mono&display=swap" rel="stylesheet">
   </Head>
   <div>
-    <slot></slot>
+    <Sidebar></Sidebar>
+    <Navbar></Navbar>
+      <slot></slot>
     <Footer />
   </div>
 </template>
 
 <script setup>
+import Sidebar from "~/components/Navbar/Sidebar.vue";
 useHead({
   titleTemplate: 'Mauricio Vargas',
   script: [

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { articlesHomeApp } from '~/src/home/application/Get/articlesHomeApp';
 
 useHead({

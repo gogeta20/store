@@ -1,4 +1,4 @@
-import {getArticlesHome} from "~/src/home/infrastructure/useCases/Get/articlesHomeApi";
+import { getArticlesHome } from "~/src/home/infrastructure/useCases/Get/articlesHomeApi";
 
 export function articlesHomeApp() {
 

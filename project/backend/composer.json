@@ -13,6 +13,7 @@
         "doctrine/orm": "^3.0",
         "lambdish/phunctional": "^2.1",
         "nelmio/cors-bundle": "^2.4",
+        "simplehtmldom/simplehtmldom": "2.0-RC2",
         "symfony/apache-pack": "^1.0",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
