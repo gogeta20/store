@@ -1,13 +1,122 @@
 <script lang="ts" setup>
-import { useWebsiteStore} from "~/stores/website";
-const webSiteStore = useWebsiteStore()
+import { mainAppStore} from "~/stores/website";
+import MaqintMenu from "~/components/Navbar/MaqintMenu.vue";
+const mainStore = mainAppStore()
+defineProps({
+  isOpenSideBar: {
+    type: Boolean,
+  },
+});
+const myRoutes = reactive([
+  {
+    id: "1",
+    title: "router.home",
+    path: "/inicio",
+    icon: "home",
+    isVisible: true,
+    children: [
+      {
+        id: "2.2",
+        title: "sidebar.solicitud.dcx",
+        path: "/doc-compartido-xestion/alta",
+        isVisible: true,
+        type: 'third',
+        children: [],
+      },
+      {
+        id: "2.3",
+        title: "sidebar.solicitud.ams",
+        path: "/modelo/ini",
+        isVisible: false,
+        children: [],
+        type: 'third',
+      },
+      {
+        id: "2.1",
+        title: "sidebar.solicitud.title",
+        path: "/solicitude/archivos",
+        isVisible: false,
+        children: [],
+        type: 'third',
+      },
+    ],
+    type: 'main'
+  },
+  {
+    id: "2",
+    title: "sidebar.solicitud.title",
+    path: "#",
+    icon: "plus",
+    isVisible: true,
+    type: 'main',
+    children: [
+      {
+        id: "2.0",
+        title: "sidebar.solicitud.po",
+        path: "/proxecto-ordenacion/alta",
+        isVisible: true,
+        type: 'second',
+        children: [],
+      },
+      {
+        id: "2.1",
+        title: "sidebar.solicitud.dsx",
+        path: "/doc-simple-xestion/alta",
+        isVisible: true,
+        children: [],
+      },
+    ],
+  },
+  {
+    id: "3",
+    title: "router.consulta",
+    path: "/consulta",
+    icon: "search",
+    isVisible: true,
+    type: 'main',
+    children: [
+      {
+        id: "3.0",
+        title: "router.expedientes",
+        path: "/consulta/expedientes",
+        isVisible: true,
+        type: 'second',
+        children: [],
+      },
+      {
+        id: "3.1",
+        title: "router.estado-tramitacion",
+        path: "/consulta/estado-tramitacion",
+        isVisible: true,
+        children: [],
+      },
+      {
+        id: "3.2",
+        title: "router.expedientes-requerimiento",
+        path: "/consulta/expedientes-requerimiento",
+        isVisible: true,
+        type: 'second',
+        children: [],
+      },
+    ],
+  },
+  {
+    id: "4",
+    title: "router.consulta-modelos",
+    path: "/modelo/consulta",
+    icon: "search",
+    isVisible: true,
+    type: 'main',
+    children: [],
+  },
+]);
 </script>
 <template>
-  <aside class="bh-sidebar" :class="[{ 'bh-sidebar--hidden': webSiteStore.isOpenSideBar }]">
+  <aside class="bh-sidebar" :class="[{ 'bh-sidebar--hidden': isOpenSideBar }]">
     <div  class="bh-header__logo">
       <router-link to="/inicio">
-        <img v-if="webSiteStore.logoImage" :alt="webSiteStore.nombreApp" :src="webSiteStore.imgLogo" lazy width="130" height="30" />
-        <h1 v-else class="name-page-h1">{{ webSiteStore.nombreApp }}</h1>
+        <img v-if="mainStore.logoImage" :alt="mainStore.nombreApp" :src="mainStore.imgLogo" lazy width="130" height="30" />
+        <h1 v-else class="name-page-h1">{{ mainStore.nombreApp }}</h1>
       </router-link>
     </div>
     <nav class="bh-nav">

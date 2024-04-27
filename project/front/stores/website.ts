@@ -1,19 +1,18 @@
 // import defineStore  from '@pinia/nuxt';
 import { defineStore } from 'pinia';
-export const useWebsiteStore = defineStore('webSiteStore', {
+export const mainAppStore = defineStore('appStore', {
     state: () => ({
+        openSidebar: true,
         name: '',
         description: '',
         isOpenSideBar: true,
         nombreApp: 'mau',
-        imgLogo: 'img',
-        logoImage: 'img',
+        imgLogo: '/img/vue.svg',
+        logoImage: '/img/vue.svg',
     }),
-    // actions: {
-    //     async fetch() {
-    //         const infos = await $fetch('https://api.nuxt.com/modules/pinia')
-    //         this.name = infos.name
-    //         this.description = infos.description
-    //     }
-    // }
+    actions: {
+        switchSidebar(){
+            this.openSidebar = !this.openSidebar;
+        },
+    },
 })
