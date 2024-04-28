@@ -137,7 +137,6 @@ const handlerLogout = () => {
   border-bottom: 1px solid #eee;
   height: var(--header-height);
   width: 100%;
-  background-color: #fff;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
 
   &__main {

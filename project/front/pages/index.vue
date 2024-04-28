@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { articlesHomeApp } from '~/src/home/application/Get/articlesHomeApp';
 import Article from "~/components/Article/Article.vue";
+import Slider from "~/components/Slider/Slider.vue";
 useHead({
   title: 'Home',
 });
@@ -16,6 +17,7 @@ console.log(response, 'http');
 // });
 </script>
 <template>
+  <Slider></Slider>
   <header>
     <h1>Cool Articles</h1>
   </header>

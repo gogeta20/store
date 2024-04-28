@@ -145,14 +145,14 @@ ul ul{
     transition: all 0.15s linear;
 
     &:hover {
-      background-color: var(--light-gray-second);
+      background-color: var(--purple-second);
     }
 
     &.router-link-exact-active {
-      background-color: var(--light-gray-second);
+      background-color: var(--purple-second);
       border: 2px solid var(--main-green);
       &:hover {
-        background-color: var(--light-gray-second);
+        background-color: var(--purple-second);
       }
     }
 
@@ -186,7 +186,7 @@ ul ul{
 }
 
 .bh-open > .bh-nav__link--dropdown {
-  background-color: var(--light-gray-second);
+  background-color: var(--purple-second);
   //border: 2px solid var(--main-green);
 }
 

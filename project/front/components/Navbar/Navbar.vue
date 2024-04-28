@@ -64,8 +64,8 @@ import MenuListBreadcrumb from "~/components/Navbar/MenuListBreadcrumb.vue";
 <!--  </nav>-->
     <section class="bh-main__page" :class="[{ 'bh-main__page--full-width': mainStore.openSidebar }]">
       <MaqintHeader />
-      <MenuListBreadcrumb/>
-      <section class="bh-section-main">
+<!--      <MenuListBreadcrumb/>-->
+      <section class="bh-sectio n-main">
         <slot />
       </section>
     </section>
