@@ -6,9 +6,9 @@ export const mainAppStore = defineStore('appStore', {
         name: '',
         description: '',
         isOpenSideBar: true,
-        nombreApp: 'mau',
+        nombreApp: 'Moto500',
         imgLogo: '/img/vue.svg',
-        logoImage: '/img/vue.svg',
+        logoImage: false,
     }),
     actions: {
         switchSidebar(){

@@ -1,6 +1,6 @@
-<script lang="ts" setup>
-import { mainAppStore} from "~/stores/website";
+<script setup lang="ts">
 import MaqintMenu from "~/components/Navbar/MaqintMenu.vue";
+import { mainAppStore} from "~/stores/website";
 const mainStore = mainAppStore()
 defineProps({
   isOpenSideBar: {
@@ -10,32 +10,40 @@ defineProps({
 const myRoutes = reactive([
   {
     id: "1",
-    title: "router.home",
+    title: "router.marca",
     path: "/inicio",
     icon: "home",
     isVisible: true,
     children: [
       {
         id: "2.2",
-        title: "sidebar.solicitud.dcx",
-        path: "/doc-compartido-xestion/alta",
+        title: "honda",
+        path: "/honda",
         isVisible: true,
         type: 'third',
         children: [],
       },
       {
         id: "2.3",
-        title: "sidebar.solicitud.ams",
+        title: "yamaha",
         path: "/modelo/ini",
-        isVisible: false,
+        isVisible: true,
         children: [],
         type: 'third',
       },
       {
         id: "2.1",
-        title: "sidebar.solicitud.title",
+        title: "kawasaki",
         path: "/solicitude/archivos",
-        isVisible: false,
+        isVisible: true,
+        children: [],
+        type: 'third',
+      },
+      {
+        id: "2.1",
+        title: "ducati",
+        path: "/solicitude/archivos",
+        isVisible: true,
         children: [],
         type: 'third',
       },
@@ -114,7 +122,7 @@ const myRoutes = reactive([
 <template>
   <aside class="bh-sidebar" :class="[{ 'bh-sidebar--hidden': isOpenSideBar }]">
     <div  class="bh-header__logo">
-      <router-link to="/inicio">
+      <router-link to="/">
         <img v-if="mainStore.logoImage" :alt="mainStore.nombreApp" :src="mainStore.imgLogo" lazy width="130" height="30" />
         <h1 v-else class="name-page-h1">{{ mainStore.nombreApp }}</h1>
       </router-link>
@@ -125,7 +133,7 @@ const myRoutes = reactive([
   </aside>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .bh-header {
   display: flex;
   justify-content: space-between;

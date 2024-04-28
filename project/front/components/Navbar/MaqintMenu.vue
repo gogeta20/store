@@ -53,7 +53,7 @@ const classes  = (id:string,type:string,selectedItem:Array<any>,isOpenSideBar:bo
           href="#"
           class="bh-nav__link bh-nav__link--dropdown"
           @click="handleOpenSubMenu(item.id)">
-        <span>{{ item.title }} </span>
+        <span>{{ $t(item.title) }} </span>
       </a>
       <BaseRouterLink
           v-if="item.children?.length === 0 && item.isVisible"
@@ -71,87 +71,204 @@ const classes  = (id:string,type:string,selectedItem:Array<any>,isOpenSideBar:bo
 </template>
 
 <style lang="scss" scoped>
-.bh-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  &__logo{
-    border-bottom: solid 3px var(--light-gray-second);
-    margin-bottom: 1rem;
-  }
+ul ul{
+  list-style: circle;
+  padding: 0;
+  margin: 0 0 0 18px;
 }
+.item-main{
+  border-left: solid 2px  var(--light-gray-second);
+}
+.item-main ul li a{
+  padding-left: .6rem !important;
+}
+.bh-sidebar--hidden {
+  .bh-nav__link {
+    justify-content: flex-end;
+  }
 
-.bh-sidebar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  min-width: var(--sidbar-width);
-  max-width: var(--sidbar-width);
-  background-color: var(--dark-gray);
-  box-shadow: inset -5px 5px 18px -5px rgb(0 0 0 / 80%);
-  overflow: auto;
-  transition: left 0.4s ease 0s;
-  z-index: 5;
-  opacity: 0.9;
-
-  &--hidden {
-    left: var(--sidbar-width-negative);
-    overflow-y: auto;
-
-    .bh-nav__list {
-      width: 50px;
-      margin-left: 190px;
+  .bh-nav__link,
+  .bh-nav__link.bh-nav__link--dropdown {
+    :deep(span) {
+      display: none;
     }
 
-    .bh-nav__link {
-      :deep(span) {
-        display: none;
-      }
+    &.router-link-exact-active {
+      transform: scale(1);
+    }
 
-      &.router-link-exact-active {
-        display: block;
-        transform: scale(1);
-      }
+    :deep(.bh-nav__icon) {
+      color: #fff;
+      text-align: center;
+    }
 
+    &:hover {
       :deep(.bh-nav__icon) {
+        font-size: 1.4rem;
         color: #fff;
-        text-align: center;
-      }
-
-      &:hover {
-        :deep(.bh-nav__icon) {
-          font-size: 1.4rem;
-          color: #fff;
-          text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
-        }
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
       }
     }
   }
-}
 
-.name-page-h1{
-  margin: 0;
-  height: var(--header-height);
-  font-size: 1.5rem;
-  text-align: center;
-  align-content: center;
-  color: white;
-  font-family: "Monospace", "Arial", "serif";
+  .bh-nav__item > .bh-nav__link--dropdown > svg.fa-chevron-down {
+    display: none;
+  }
 }
 
 .bh-nav {
-  :deep(.bh-nav__icon) {
-    font-size: 1.2rem;
-    color: #fff;
+  &__list {
+    list-style: circle;
+    padding: 0.2rem 0 0 0;
+    margin: 0;
+  }
+
+  &__item {
+    padding: 5px 5px;
+    position: relative;
+    //display: block;
+    color: #ffffff;
+  }
+
+  &__link {
+    border-radius: 5px;
+    align-items: center;
+    gap: 0.5rem;
+    color: inherit;
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all 0.15s linear;
+
+    &:hover {
+      background-color: var(--light-gray-second);
+    }
+
+    &.router-link-exact-active {
+      background-color: var(--light-gray-second);
+      border: 2px solid var(--main-green);
+      &:hover {
+        background-color: var(--light-gray-second);
+      }
+    }
+
+    .glyphicon {
+      font-size: 0.991rem;
+      margin-right: 0.5rem;
+      top: 10px;
+      line-height: 0;
+      vertical-align: text-top;
+      position: relative;
+      color: #fff;
+    }
   }
 }
 
-@media (min-width: 540px) {
-  .bh-sidebar {
-    opacity: 1;
+.bh-nav__link svg {
+  transition: all 0.4s ease;
+}
+
+.bh-nav__link svg.fa-chevron-down {
+  position: absolute;
+  right: 12px;
+  left: auto;
+}
+
+.bh-collapse {
+  transition: all 0.4s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.bh-open > .bh-nav__link--dropdown {
+  background-color: var(--light-gray-second);
+  //border: 2px solid var(--main-green);
+}
+
+.bh-open > .bh-nav__link--dropdown:after {
+  content: '\2303';
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+.bh-nav__link--dropdown{
+  display: flex;
+  justify-content: space-between;
+}
+
+.bh-nav__link--dropdown:after {
+  //content: '\25BF';
+  content: '\2304';
+}
+
+.bh-open .bh-collapse .bh-nav__link {
+  font-size: 0.875rem;
+
+  &:hover {
+    font-size: 1rem;
   }
+}
+
+.bh-nav__item > .bh-nav__link--dropdown > svg.fa-chevron-down {
+  top: 12px;
+  transform: rotate(180deg);
+}
+
+.bh-open > .bh-nav__link--dropdown > svg.fa-chevron-down {
+  top: 12px;
+  transform: initial;
+}
+
+.bh-open > .bh-collapse {
+  opacity: 1;
+  height: auto;
+}
+
+.bh-collapse .bh-nav__link {
+  padding-left: 2rem;
+  text-align: center;
+}
+
+.bh-collapse .bh-nav__link:before {
+  // content: "•";
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0.875rem;
+  width: 15px;
+  height: 100%;
+  font-size: 50px;
+  line-height: 32px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.bh-collapse .bh-nav__link:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.4rem;
+  width: 1px;
+  height: 100%;
+  // background-image: linear-gradient(to bottom, #ccc 50%, rgba(255, 255, 255, 0) 0);
+  background-image: none;
+  background-position: left;
+  background-size: 1px 5px;
+  background-repeat: repeat-y;
+}
+
+svg.fa-chevron-down {
+  top: 12px;
+  transform: rotate(180deg);
+}
+
+.bh-open svg.fa-chevron-down {
+  top: 12px;
+  transform: initial;
 }
 </style>
