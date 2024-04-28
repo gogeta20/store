@@ -44,8 +44,13 @@ useHead({
   padding: 1rem;
   border-radius: 10px;
 }
+.fixed:hover i{
+  background: -webkit-linear-gradient(0deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .fixed:hover{
-  background-image: linear-gradient(90deg, #ff8a00, #e52e71);
+  border: solid 1px #ff8a00;
 }
 .bh-wrapper {
   display: flex;

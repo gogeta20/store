@@ -145,12 +145,17 @@ ul ul{
     transition: all 0.15s linear;
 
     &:hover {
-      background-color: var(--purple-second);
+      border:solid 1px var(--purple-second);
+      background: -webkit-linear-gradient(0deg, #ff8a00, #e52e71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     &.router-link-exact-active {
-      background-color: var(--purple-second);
-      border: 2px solid var(--main-green);
+      border:solid 1px var(--purple-second);
+      background: -webkit-linear-gradient(0deg, #ff8a00, #e52e71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       &:hover {
         background-color: var(--purple-second);
       }
@@ -187,6 +192,10 @@ ul ul{
 
 .bh-open > .bh-nav__link--dropdown {
   background-color: var(--purple-second);
+  //border:solid 1px var(--purple-second);
+  //background: -webkit-linear-gradient(0deg, #ff8a00, #e52e71);
+  //-webkit-background-clip: text;
+  //-webkit-text-fill-color: transparent;
   //border: 2px solid var(--main-green);
 }
 

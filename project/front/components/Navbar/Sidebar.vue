@@ -210,6 +210,12 @@ const myRoutes = reactive([
   //font-family: "Monospace", "Arial", "serif";
 }
 
+.name-page-h1:hover{
+  background: -webkit-linear-gradient(0deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .bh-nav {
   :deep(.bh-nav__icon) {
     font-size: 1.2rem;
