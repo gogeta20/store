@@ -7,7 +7,7 @@ onMounted(()=>{
     speed: 4,
 
     width: function () {
-      return window.innerWidth;
+      return window.innerWidth-500;
     },
 
     height: function () {
@@ -54,9 +54,9 @@ onMounted(()=>{
     // Called on window resize
     resizeEvent: function () {
       var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-      gradient.addColorStop(0, "rgba(23, 210, 168, 0.2)");
+      gradient.addColorStop(0, "rgba(80, 30, 145, 0)");
       gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.5)");
-      gradient.addColorStop(1, "rgba(23, 210, 168, 0.2)");
+      gradient.addColorStop(1, "rgba(80, 30, 145, 0)");
 
       var index = -1;
       var length = this.waves.length;
@@ -95,10 +95,14 @@ onMounted(()=>{
 </template>
 <style scoped lang="scss">
 .slider-one {
-  font-family: 'Montserrat', sans-serif;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  //font-family: 'Montserrat', sans-serif;
   height: 100%;
-  background: linear-gradient( 90deg, #34AFFC, red ) no-repeat center center fixed;
+  background: linear-gradient(1deg, var(--purple-light), var(--purple-second)) no-repeat center center fixed;
+  border-radius: 10px;
+  margin: auto;
+  width: 98%;
 }
 .container {
   display: flex;
@@ -150,7 +154,7 @@ onMounted(()=>{
   color: white;
   font-size: 42px;
   font-weight: 400;
-  font-family: 'Lato', sans-serif;
+  //font-family: 'Lato', sans-serif;
 }
 
 .splash__btn {

@@ -17,19 +17,36 @@ useHead({
 <template>
   <Head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </Head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> </Head>
   <div class="bh-wrapper">
     <main class="bh-main">
       <Sidebar :is-open-side-bar="sidebarVisible"></Sidebar>
       <Navbar>
         <router-view></router-view>
       </Navbar>
+      <button type="button" class="fixed bh-header__toggle" @click="mainStore.switchSidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </main>
     <Footer />
   </div>
 </template>
 
 <style scoped lang="scss">
+.fixed{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--purple-second);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.fixed:hover{
+  background-image: linear-gradient(90deg, #ff8a00, #e52e71);
+}
 .bh-wrapper {
   display: flex;
   flex-direction: column;

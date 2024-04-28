@@ -2,6 +2,7 @@
 import { articlesHomeApp } from '~/src/home/application/Get/articlesHomeApp';
 import Article from "~/components/Article/Article.vue";
 import Slider from "~/components/Slider/Slider.vue";
+import Articles from "~/components/Article/Articles.vue";
 useHead({
   title: 'Home',
 });
@@ -18,19 +19,20 @@ console.log(response, 'http');
 </script>
 <template>
   <Slider></Slider>
+  <Articles></Articles>
   <header>
     <h1>Cool Articles</h1>
   </header>
   <div class="band">
-    <div class="item-1">
-      <a href="https://design.tutsplus.com/articles/international-artist-feature-malaysia--cms-26852" class="card">
-        <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg);"></div>
-        <article>
-          <h1>International Artist Feature: Malaysia</h1>
-          <span>Mary Winkler</span>
-        </article>
-      </a>
-    </div>
+<!--    <div class="item-1">-->
+<!--      <a href="https://design.tutsplus.com/articles/international-artist-feature-malaysia&#45;&#45;cms-26852" class="card">-->
+<!--        <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg);"></div>-->
+<!--        <article>-->
+<!--          <h1>International Artist Feature: Malaysia</h1>-->
+<!--          <span>Mary Winkler</span>-->
+<!--        </article>-->
+<!--      </a>-->
+<!--    </div>-->
     <Article
         href="https://design.tutsplus.com/articles/envato-tuts-community-challenge-created-by-you-july-edition--cms-26724"
         image="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/landing.png);"

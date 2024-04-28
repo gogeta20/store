@@ -150,7 +150,7 @@ const myRoutes = reactive([
 }
 
 .bh-sidebar {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
@@ -207,7 +207,7 @@ const myRoutes = reactive([
   text-align: center;
   align-content: center;
   color: white;
-  font-family: "Monospace", "Arial", "serif";
+  //font-family: "Monospace", "Arial", "serif";
 }
 
 .bh-nav {
