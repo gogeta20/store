@@ -3,7 +3,6 @@
 import {mainAppStore} from "~/stores/website";
 const mainStore = mainAppStore();
 import { defineComponent, onUnmounted, ref } from "vue";
-import { RouterLink } from "vue-router";
 
 defineComponent({
   name: "BaseHeader",
@@ -19,17 +18,17 @@ defineProps({
     default: null,
   },
 });
-// const usuarioStore = useUsuarioStore();
+const emit = defineEmits(["menu-toggle"]);
 
+const isOpenDropdown = ref(false);
+const isOpenLogoutConfirm = ref(false);
+
+// const usuarioStore = useUsuarioStore();
 // const imgLogo = ref(
 //     usuarioStore.datos.typeLogin != "casExtranet"
 //         ? "/xorfor/images/xorfor-intranet-logo.png"
 //         : "/xorfor/images/xorfor-extranet-logo.png"
 // );
-const emit = defineEmits(["menu-toggle"]);
-
-const isOpenDropdown = ref(false);
-const isOpenLogoutConfirm = ref(false);
 
 // function onMenuToggle(event: Event) {
 //   event.preventDefault();
@@ -167,23 +166,29 @@ const handlerLogout = () => {
     border: none;
     background-color: transparent;
     margin-right: 1rem;
+
     span {
       color: #555;
       font-size: 1.4rem;
       cursor: pointer;
 
       &:hover {
-        color: var(--light-blue);
+        //color: var(--resaltado);
         transition: all 0.2s ease 0s;
       }
     }
 
+    &:hover {
+      background: var(--resaltado);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      //transform: scale(0.9);
+      //transform: rotate(360deg);
+    }
     &:focus {
       outline: none;
-    }
-
-    &:hover {
-      transform: scale(0.9);
+      transition: all 1s ease;
+      transform: rotate(180deg);
     }
   }
 }

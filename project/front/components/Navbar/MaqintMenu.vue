@@ -143,7 +143,7 @@ ul ul{
     overflow: hidden;
     white-space: nowrap;
     transition: all 0.15s linear;
-
+    border: solid 1px transparent;
     &:hover {
       border:solid 1px var(--purple-second);
       background: -webkit-linear-gradient(0deg, #ff8a00, #e52e71);
@@ -208,6 +208,7 @@ ul ul{
 .bh-nav__link--dropdown{
   display: flex;
   justify-content: space-between;
+  border: solid 1px var(--light-purple-base);
 }
 
 .bh-nav__link--dropdown:after {
@@ -217,9 +218,10 @@ ul ul{
 
 .bh-open .bh-collapse .bh-nav__link {
   font-size: 0.875rem;
-
+  border: solid 1px transparent;
   &:hover {
-    font-size: 1rem;
+    //font-size: 1rem;
+    border: solid 1px var(--purple-second);
   }
 }
 

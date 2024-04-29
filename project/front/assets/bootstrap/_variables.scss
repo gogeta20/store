@@ -19,9 +19,15 @@
   --main-blue: #1d71b8;
   --medium-blue: #1184b8;
   --light-blue: #009ee0;
+
+
   // purple
+    --resaltado-orange: #ff8a00;
     --light-purple: #252439;
-    --dark-purple-gradiend: linear-gradient(180deg, rgb(37, 36, 57) 50%, rgb(47 45 73) 100%);;
+    --dark-purple-gradiend: linear-gradient(180deg, rgb(37, 36, 57) 50%, rgb(47 45 73) 100%);
+    --resaltado: linear-gradient(90deg, #ff8a00, #e52e71);
+    --resaltado-2: linear-gradient(90deg, #ff8a00,80%, #e52e71);
+    --resaltado-3: linear-gradient(0deg, #252439, #eeedff);
     --light-purple-base: rgb(37,36,57);
     --light-purple-bg: #eeedff;
     --purple-second: #392f51;
@@ -87,3 +93,8 @@
   --color-required: #ffffd3;
   --warning-blond: #c5690ba1;
 }
+//.color1 { #4c94dc };
+//.color2 { #74acfc };
+//.color3 { #2d227b };
+//.color4 { #645aa8 };
+//.color5 { #afafd1 };

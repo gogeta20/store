@@ -77,15 +77,6 @@ onMounted(()=>{
   <div class="slider-one">
     <canvas id="waves"></canvas>
     <div class="container">
-<!--      <ul class="nav">-->
-<!--        <li class="nav__item .nav__item&#45;&#45;logo">Logo</li>-->
-<!--        <div class="nav__links">-->
-<!--          <li class="nav__item">Why use COO</li>-->
-<!--          <li class="nav__item">How it works</li>-->
-<!--          <li class="nav__item">Testimonial</li>-->
-<!--          <li class="nav__item">About us</li>-->
-<!--        </div>-->
-<!--      </ul>-->
       <div class="splash__center">
         <h1 class="splash__title">Moto500</h1>
         <button class="splash__btn">vamos alli</button>
@@ -97,7 +88,6 @@ onMounted(()=>{
 .slider-one {
   display: flex;
   justify-content: center;
-  //font-family: 'Montserrat', sans-serif;
   height: 100%;
   background: linear-gradient(1deg, var(--purple-light), var(--purple-second)) no-repeat center center fixed;
   border-radius: 10px;
@@ -110,35 +100,6 @@ onMounted(()=>{
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-}
-
-.nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.nav__item--logo {
-  width: 100px;
-  margin-left: 15%;
-}
-
-.nav__links {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 12px;
-}
-.nav__item {
-  padding: 0 30px;
-  height: 100px;
-  text-transform: uppercase;
-  color: white;
 }
 
 .splash__center {
@@ -154,7 +115,6 @@ onMounted(()=>{
   color: white;
   font-size: 42px;
   font-weight: 400;
-  //font-family: 'Lato', sans-serif;
 }
 
 .splash__btn {

@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import { mainAppStore } from "~/stores/website";
 const mainStore = mainAppStore()
-import Sidebar from "~/components/Navbar/Sidebar.vue";
 import MaqintHeader from "~/components/Navbar/MaqintHeader.vue";
-import MenuListBreadcrumb from "~/components/Navbar/MenuListBreadcrumb.vue";
 </script>
 <template>
+    <section class="bh-main__page" :class="[{ 'bh-main__page--full-width': mainStore.openSidebar }]">
+      <MaqintHeader />
+      <section class="bh-sectio n-main">
+        <slot />
+      </section>
+      <Footer />
+    </section>
+</template>
+
+
 <!--  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
 <!--    <div class="container-fluid">-->
 <!--      <div class="collapse navbar-collapse">-->
@@ -62,11 +70,3 @@ import MenuListBreadcrumb from "~/components/Navbar/MenuListBreadcrumb.vue";
 <!--      </div>-->
 <!--    </div>-->
 <!--  </nav>-->
-    <section class="bh-main__page" :class="[{ 'bh-main__page--full-width': mainStore.openSidebar }]">
-      <MaqintHeader />
-<!--      <MenuListBreadcrumb/>-->
-      <section class="bh-sectio n-main">
-        <slot />
-      </section>
-    </section>
-</template>
