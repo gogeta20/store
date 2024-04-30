@@ -209,6 +209,28 @@ button{
   border: 0;
   background: transparent;
 }
+
+.band {
+  width: 90%;
+  //max-width: 1240px;
+  margin: 5rem auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+
+  @media (min-width: 30em) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 60em) {
+    //grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
+}
+// fonts
 .kanit-thin {
   font-family: "Kanit", sans-serif;
   font-weight: 100;

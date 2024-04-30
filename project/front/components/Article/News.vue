@@ -1,19 +1,23 @@
+<script setup>
+import New from "~/components/Article/New.vue";
+import TitleArticle from "~/components/Article/TitleArticle.vue";
+</script>
 <template>
   <div class="container-destacados">
     <TitleArticle title="Noticias destacadas"></TitleArticle>
-  <div class="popular-articles">
+    <div class="popular-articles">
       <div class="mini-card-grid">
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
-        <NewsItem></NewsItem>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
+        <New></New>
       </div>
     </div>
   </div>
@@ -143,8 +147,3 @@
   //background: #1cd511;
 }
 </style>
-<script setup>
-import Article from "~/components/Article/Article.vue";
-import NewsItem from "~/components/Article/NewsItem.vue";
-import TitleArticle from "~/components/Article/TitleArticle.vue";
-</script>

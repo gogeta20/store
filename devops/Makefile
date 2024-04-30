@@ -69,6 +69,9 @@ frontend:
 packages-front:
 	@docker-compose exec frontend sh -c "chown -R node:node node_modules/"
 
+front-permission:
+	@docker-compose exec frontend sh -c "chown -R node:node ."
+
 user-front:
 	docker exec -u node -it frontend sh
 
