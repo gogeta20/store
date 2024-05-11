@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Main\Application\UseCases\Querys\Test\Check;
 
-use App\Main\Domain\UseCases\Query\Test\AvisosGetAll;
+use App\Main\Domain\UseCases\Query\Test\Check;
 use App\Shared\Domain\BaseResponse;
 use App\Shared\Domain\Bus\Query\QueryHandler;
 use App\Shared\Domain\Interfaces\TranslateInterfaceCustom;
 use Symfony\Component\HttpFoundation\Response;
 
-final class AvisosGetAllQueryHandler implements QueryHandler
+final class CheckQueryHandler implements QueryHandler
 {
     public function __construct(
-        private readonly AvisosGetAll $avisosGetAll,
+        private readonly Check             $check,
         protected TranslateInterfaceCustom $translatorCustom
     ) {
     }
 
-    public function __invoke(AvisosGetAllQuery $query): BaseResponse
+    public function __invoke(CheckQuery $query): BaseResponse
     {
-        $result =  $this->avisosGetAll->__invoke($query);
+        $result =  $this->check->__invoke($query);
         list($status, $message, $data) = $this->resolveResponseParams($result);
         $response = new BaseResponse($data);
         $response->setStatus($status);

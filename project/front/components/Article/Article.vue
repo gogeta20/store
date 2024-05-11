@@ -38,12 +38,27 @@ const props = defineProps({
 .content-texto{
   padding: 1.2rem;
 }
-  .thumb {
-    padding-bottom: 60%;
-    background-size: cover;
-    background-position: center center;
-      border-radius: 10px 10px 0px 0px;
-  }
+.container-img {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  -webkit-justify-content: center;
+  /* Safari */
+  justify-content: center;
+}
+
+.container-img img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.thumb {
+  padding-bottom: 60%;
+  background-size: cover;
+  background-position: center center;
+    border-radius: 10px 10px 0px 0px;
+}
 /*! CSS Used from: https://css-tricks.com/wp-content/themes/CSS-Tricks-17/style.css?cache_bust=1580767355603 */
 @media screen and (prefers-reduced-motion:reduce) {
   * {

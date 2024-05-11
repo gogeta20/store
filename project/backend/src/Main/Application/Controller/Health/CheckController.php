@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Main\Application\Controller\Health;
 
-use App\Main\Application\UseCases\Querys\Test\Check\AvisosGetAllQuery;
+use App\Main\Application\UseCases\Querys\Test\Check\CheckQuery;
 use App\Shared\Domain\BaseResponse;
 use App\Shared\Domain\StandardApiResponse;
 use App\Shared\Infrastructure\Symfony\ApiController;
@@ -18,7 +18,7 @@ class CheckController extends ApiController
     {
         /** @var BaseResponse $response */
         $response = $this->ask(
-            new AvisosGetAllQuery()
+            new CheckQuery()
         );
 
         return (new StandardApiResponse(

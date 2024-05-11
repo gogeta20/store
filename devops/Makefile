@@ -55,6 +55,12 @@ restart-apache:
 chown-config: #make chown-config file=doctrine.yaml
 	docker exec backend sh -c "chown -R www-data:www-data /var/www/html/$(file)"
 
+back-permission:
+	docker exec backend sh -c "chown -R www-data:www-data ."
+
+back-permission-755:
+	docker exec backend sh -c "chmod -R 777 tests"
+
 #========================================
 phpmyadmin:
 	docker exec -it phpmyadmin /bin/bash
@@ -89,6 +95,7 @@ f ?= default
 .PHONY: db-update
 
 db-update: #make db-update f=mySql
-	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
+	docker exec db sh -c 'mysql -u itachi -pgbcv123M -e "SOURCE /var/www/html/sql/$(f).sql"'
+	#docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
 
 #========================================

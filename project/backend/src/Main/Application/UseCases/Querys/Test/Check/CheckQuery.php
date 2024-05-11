@@ -6,7 +6,7 @@ namespace App\Main\Application\UseCases\Querys\Test\Check;
 
 use App\Shared\Domain\Bus\Query\Query;
 
-class AvisosGetAllQuery implements Query
+class CheckQuery implements Query
 {
     public function __construct()
     {
