@@ -44,7 +44,7 @@ class EntityFakerRepository extends BaseDoctrine implements FakerInterface
             }
             return ["creado correctamente"];
         } catch (\Exception $exc) {
-            throw new StoreException("Error tabla tbl_imagen :" .$exc->getMessage(),$exc->getCode(),$exc);
+            throw new StoreException("Error tabla database :" .$exc->getMessage(),$exc->getCode(),$exc);
         }
 
     }

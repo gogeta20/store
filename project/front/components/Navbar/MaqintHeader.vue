@@ -4,10 +4,6 @@ import {mainAppStore} from "~/stores/website";
 const mainStore = mainAppStore();
 import { defineComponent, onUnmounted, ref } from "vue";
 
-defineComponent({
-  name: "BaseHeader",
-});
-
 defineProps({
   nombreApp: {
     type: String,
@@ -66,7 +62,14 @@ const handlerLogout = () => {
         <nav>
           <ul class="menu-header__ul">
             <li>
-              UNO
+                <router-link
+                    to="/nuevoArticulo"
+                    class="bh-base-router-link"
+                    aria-hidden="true"
+                    v-bind="$attrs">
+                    <!--    <FontAwesomeIcon v-if="icon" :icon="icon" :title="nombre" :class="iconClass" />-->
+                    <span>Crear Articulo </span>
+                </router-link>
             </li>
             <li>
               dos

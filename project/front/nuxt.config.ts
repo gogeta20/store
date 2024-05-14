@@ -1,33 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {
-    head: {
-      link: [
-        {
-          rel: 'stylesheet',
-          href: '/css/global.css',
+    app: {
+        head: {
+            link: [
+                {
+                    rel: 'stylesheet',
+                    href: '/css/global.css',
+                },
+            ],
         },
-      ],
     },
-  },
-  css:['@/assets/bootstrap/main.scss'],
-  runtimeConfig: {
-    // Private keys are only available on the server
-    apiSecret: '123',
-
-    // Public keys that are exposed to the client
-    public: {
-      apiPre: process.env.PRE_URL,
-      apiBase: process.env.API_URL,
+    css: [
+        '@/assets/bootstrap/main.scss',
+    ],
+    runtimeConfig: {
+        apiSecret: '123',
+        public: {
+            apiPre: process.env.PRE_URL,
+            apiBase: process.env.API_URL,
+        },
     },
-  },
-  modules: [
-      '@pinia/nuxt'
-  ],
-  // alias: {
-  //   pinia: "/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs"
-  // },
-  // pinia: {
-  //   storesDirs: ['./stores/**'],
-  // },
+    modules: ['@pinia/nuxt', 'nuxt-primevue', "nuxt-tiptap-editor"],
 });

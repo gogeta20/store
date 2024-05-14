@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "npm i && nuxt dev",
+    "npm": "npm i && nuxt dev",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -10,6 +11,8 @@
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
     "nuxt": "^3.10.3",
+    "nuxt-primevue": "^0.3.1",
+    "nuxt-tiptap-editor": "^1.1.2",
     "nuxt-vite": "^0.3.5",
     "sass": "^1.49.10",
     "sass-loader": "^12.4.0",
@@ -22,6 +25,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "pinia": "^2.1.7",
+    "primevue": "^3.52.0",
     "sine-waves": "^0.3.0"
   }
 }

@@ -6,7 +6,7 @@ namespace App\Main\Application\UseCases\Command\Health;
 
 use App\Shared\Domain\Bus\Command\Command;
 
-readonly class FakerCommand implements Command
+class FakerCommand implements Command
 {
     public static function create(array $parameters): self
     {

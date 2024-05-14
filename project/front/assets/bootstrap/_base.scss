@@ -207,7 +207,7 @@ label {
 
 button{
   border: 0;
-  background: transparent;
+  //background: transparent;
 }
 
 .band {
@@ -230,7 +230,31 @@ button{
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   }
 }
+// input
 
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+  background: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #0056b3;
+}
+.container-text-tiptap{
+  padding: 2rem !important;
+}
 // fonts
 .kanit-thin {
   font-family: "Kanit", sans-serif;
