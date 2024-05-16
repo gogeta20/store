@@ -1,6 +1,22 @@
 <script setup lang="ts">
-import InputBasic from "~/components/Input/InputBasic.vue";
+import {defineProps} from "vue";
 // import TiptapEditorContent from "nuxt-tiptap-editor";
+const props = defineProps({
+    idInput: {
+        type: String,
+        default: "",
+    },
+    label: {
+        type: String,
+        default: "",
+    },
+    modelValue: {
+        type: String,
+        default: "",
+    }
+});
+const emit = defineEmits(["update:modelValue"]);
+const data = ref('')
 const editor = useEditor({
     content: "<p>I'm running Tiptap with Vue.js. 🎉</p>",
     extensions: [TiptapStarterKit],
@@ -8,6 +24,10 @@ const editor = useEditor({
         attributes: {
             class: 'container-text-tiptap',
         },
+    },
+    onUpdate: ({ editor }) => {
+        data.value = editor.getText();
+        emit('update:modelValue', data.value);
     },
 });
 </script>
@@ -20,7 +40,7 @@ const editor = useEditor({
                 :class="{ 'is-active': editor.isActive('bold') }"
                 class="btn btn-outline-dark"
             >
-                bold
+                negrita
             </button>
             <button
                 @click="editor.chain().focus().toggleItalic().run()"
@@ -28,7 +48,7 @@ const editor = useEditor({
                 :class="{ 'is-active': editor.isActive('italic') }"
                 class="btn btn-outline-dark"
             >
-                italic
+                cursiva
             </button>
             <button
                 @click="editor.chain().focus().toggleStrike().run()"
@@ -36,7 +56,7 @@ const editor = useEditor({
                 :class="{ 'is-active': editor.isActive('strike') }"
                 class="btn btn-outline-dark"
             >
-                strike
+                tachado
             </button>
             <button
                 @click="editor.chain().focus().toggleCode().run()"
@@ -44,20 +64,20 @@ const editor = useEditor({
                 :class="{ 'is-active': editor.isActive('code') }"
                 class="btn btn-outline-dark"
             >
-                code
+                código
             </button>
             <button @click="editor.chain().focus().unsetAllMarks().run()" class="btn btn-outline-dark">
-                clear marks
+                eliminar marcas
             </button>
             <button @click="editor.chain().focus().clearNodes().run()"   class="btn btn-outline-dark">
-                clear nodes
+                eliminar nodos
             </button>
             <button
                 @click="editor.chain().focus().setParagraph().run()"
                 :class="{ 'is-active': editor.isActive('paragraph') }"
                 class="btn btn-outline-dark"
             >
-                paragraph
+                párrafo
             </button>
             <button
                 @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
@@ -106,48 +126,48 @@ const editor = useEditor({
                 :class="{ 'is-active': editor.isActive('bulletList') }"
                 class="btn btn-outline-dark"
             >
-                bullet list
+                lista de viñetas
             </button>
             <button
                 @click="editor.chain().focus().toggleOrderedList().run()"
                 :class="{ 'is-active': editor.isActive('orderedList') }"
                 class="btn btn-outline-dark"
             >
-                ordered list
+                lista ordenada
             </button>
             <button
                 @click="editor.chain().focus().toggleCodeBlock().run()"
                 :class="{ 'is-active': editor.isActive('codeBlock') }"
                 class="btn btn-outline-dark"
             >
-                code block
+                bloque de código
             </button>
             <button
                 @click="editor.chain().focus().toggleBlockquote().run()"
                 :class="{ 'is-active': editor.isActive('blockquote') }"
                 class="btn btn-outline-dark"
             >
-                blockquote
+                cita en bloque
             </button>
             <button @click="editor.chain().focus().setHorizontalRule().run()"   class="btn btn-outline-dark">
-                horizontal rule
+                regla horizontal
             </button>
             <button @click="editor.chain().focus().setHardBreak().run()"   class="btn btn-outline-dark">
-                hard break
+                salto fuerte
             </button>
             <button
                 @click="editor.chain().focus().undo().run()"
                 :disabled="!editor.can().chain().focus().undo().run()"
                 class="btn btn-outline-dark"
             >
-                undo
+                deshacer
             </button>
             <button
                 @click="editor.chain().focus().redo().run()"
                 :disabled="!editor.can().chain().focus().redo().run()"
                 class="btn btn-outline-dark"
             >
-                redo
+                rehacer
             </button>
         </div>
         <TiptapEditorContent :editor="editor"/>
@@ -167,7 +187,7 @@ const editor = useEditor({
     gap: .5rem;
     margin-bottom:2rem;
     padding-bottom: 1rem;
-    border-bottom: solid 2px;
+    //border-bottom: solid 2px;
 }
 
 </style>

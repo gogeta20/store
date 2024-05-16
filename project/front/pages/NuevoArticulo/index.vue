@@ -28,7 +28,6 @@ const file = ref(null)
                     <InputBasic id-input="author" label="Autor" v-model="dataPost.author"></InputBasic>
                     <InputChips id-input="tags"></InputChips>
                     <InputFile id-input="file-form-new" label="Imagen" v-model="dataPost.images"></InputFile>
-                    <InputTextArea id-input="content" label="Contenido" v-model="dataPost.content"></InputTextArea>
                     <Editor id-input="content" label="Contenido" v-model="dataPost.content"></Editor>
 
                     <input type="submit" value="Submit">
