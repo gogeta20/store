@@ -2,6 +2,7 @@
 import InputBasic from "~/components/Input/InputBasic.vue";
 import HeaderArticle from "~/components/Article/HeaderArticle.vue";
 
+import PostController from '~/src/main/application/controller/PostController';
 const dataPost = ref({
     title: '',
     tags: '',
@@ -10,9 +11,13 @@ const dataPost = ref({
     titleImages: '',
     content: '',
 });
-const file = ref(null)
+function sendData(): void {
+    PostController.createPost()
+}
 </script>
+
 <template>
+    {{ dataPost }}
     <div class="container-article-main">
         <div class="mini-card module" id="mini-post-302186">
             <HeaderArticle></HeaderArticle>
@@ -22,7 +27,7 @@ const file = ref(null)
                 <InputFile id-input="file-form-new" label="Imagen" v-model="dataPost.images"></InputFile>
                 <Editor id-input="content" label="Contenido" v-model="dataPost.content"></Editor>
 
-                <input type="submit" value="Submit">
+                <button class="btn btn-outline-info" @click="sendData()">enviar</button>
             </div>
         </div>
     </div>
