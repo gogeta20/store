@@ -27,9 +27,10 @@ function escapeHtml(unsafe: string): string {
 
 function makeChip(chipValue: string) {
     chips.value.push(escapeHtml(chipValue));
+    emit('update:modelValue', chips.value);
     updateLimiter();
 }
-
+const emit = defineEmits(["update:modelValue"]);
 function removeChip(index: number) {
     chips.value.splice(index, 1);
     updateLimiter();
@@ -89,11 +90,6 @@ function handleInput(event: KeyboardEvent) {
     </div>
 </template>
 <style scoped lang="scss">
-.container-input-basic{
-    display:flex;
-    flex-direction: column;
-    gap: .5rem;
-}
 div.chips_input {
     position: relative;
     display: flex;
@@ -132,6 +128,7 @@ div.chips_input > div.inner {
     padding: 0.5rem;
     box-sizing: border-box;
     position: relative;
+    border-radius: 5px;
 }
 
 div.chips_input > div.inner > input {

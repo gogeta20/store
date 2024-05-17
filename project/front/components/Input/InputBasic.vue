@@ -36,20 +36,4 @@ const emit = defineEmits(['update:modelValue',"change"]);
     </div>
 </template>
 <style scoped lang="scss">
-.container-input-basic{
-    display:flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-//div {
-//    width: 100%;
-//    display: grid;
-//    grid-template-columns: repeat(8, 1fr);
-//    //grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-//    grid-template-rows: 1fr;
-//    grid-column-gap: 0px;
-//    grid-row-gap: 0px;
-//}
-//
-//input { grid-area: 1/2/2/9; }
 </style>

@@ -257,7 +257,43 @@ input[type="submit"]:hover {
   border: solid 1px var(--purple-second);
   border-radius: 5px;
 }
-// fonts
+
+a {
+  color: #fff;
+}
+
+a:not(.button):not(.commentPreviewButton):not(.comment-reply-link):focus,
+a:not(.button):not(.commentPreviewButton):not(.comment-reply-link):hover {
+  //background: -webkit-gradient(linear, left top, right top, from(#ff8a00), to(#e52e71));
+  background: linear-gradient(90deg, #ff8a00, 60%, #e52e71);
+  //background-image: -webkit-gradient(linear, left bottom, left top, from(var(--purple-light)), to(var(--light-purple-bg)));
+  //background-image: linear-gradient(0deg, var(--purple-light), var(--light-purple-bg));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: none;
+}
+
+time {
+  color: #7a7a8c;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+p:empty {
+  display: none;
+}
+
+//  ********************************************** fonts *************************************************************
 .kanit-thin {
   font-family: "Kanit", sans-serif;
   font-weight: 100;
