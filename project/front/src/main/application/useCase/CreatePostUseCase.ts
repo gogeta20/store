@@ -1,7 +1,8 @@
 import { PostRepository } from '../../infrastructure/repositories/PostRepository.js';
+import type {Post} from "~/src/main/domain/entity/Post";
 
 export class CreatePostUseCase {
-    async execute(postData) {
+    async execute(postData: Post) {
         const postRepository = new PostRepository();
 
         if (!postData.title || !postData.content) {
@@ -12,7 +13,10 @@ export class CreatePostUseCase {
         const post = {
             title: postData.title,
             content: postData.content,
-            // Añade aquí el resto de las propiedades
+            author : postData.author,
+            date : new Date(),
+            images : postData.images,
+            tags : postData.tags
         };
 
         await postRepository.save(post);

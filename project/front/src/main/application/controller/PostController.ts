@@ -1,7 +1,8 @@
 import { CreatePostUseCase } from '../useCase/CreatePostUseCase.js';
+import type {Post} from "~/src/main/domain/entity/Post";
 
 export default {
-    async createPost(postData) {
+    async createPost(postData: Post) {
         const createPostUseCase = new CreatePostUseCase();
 
         try {

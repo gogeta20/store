@@ -3,6 +3,7 @@ import InputBasic from "~/components/Input/InputBasic.vue";
 import HeaderArticle from "~/components/Article/HeaderArticle.vue";
 
 import PostController from '~/src/main/application/controller/PostController';
+
 const dataPost = ref({
     title: '',
     tags: '',
@@ -11,8 +12,18 @@ const dataPost = ref({
     titleImages: '',
     content: '',
 });
+
 function sendData(): void {
-    PostController.createPost()
+    const post = {
+        title: "primer envio post",
+        content: "primer envio post",
+        author: "primer envio post",
+        date: new Date(),
+        images: ["primer envio post"],
+        tags: ["primer envio post"]
+    };
+
+    PostController.createPost(post)
 }
 </script>
 
