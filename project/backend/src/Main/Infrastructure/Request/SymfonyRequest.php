@@ -13,7 +13,7 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RequestStack;
 //use Symfony\Component\Security\Core\User\UserInterface;
 
-use function App\Shared\Tools\arrayKeyExists;
+use  App\Shared\Tools\ArrayTool;
 use function App\Shared\Tools\jsonDecode;
 use function App\Shared\Tools\jsonEncode;
 
@@ -37,6 +37,20 @@ class SymfonyRequest implements RequestInterface
      * @throws \JsonException
      */
     public function data(): array
+    {
+        $data = jsonDecode(string: $this->currentRequestContent()) ?? [];
+
+        return array_merge(
+            $data,
+            $this->routeParams(),
+//            $this->userData() ?? [],
+        );
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    public function dataFull(): array
     {
         $data = jsonDecode(string: $this->currentRequestContent()) ?? [];
 
@@ -70,7 +84,7 @@ class SymfonyRequest implements RequestInterface
     {
         $data = $this->data();
 
-        if (arrayKeyExists(key: 'filters', array: $data)) {
+        if (ArrayTool::arrayKeyExists(key: 'filters', array: $data)) {
             return jsonDecode(string: $data['filters']) ?? [];
         }
 

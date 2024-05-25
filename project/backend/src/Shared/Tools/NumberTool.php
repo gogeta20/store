@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Tools;
 
+class NumberTool
+{
 function numberFormat(float $value): string
 {
     return number_format($value, 2, ',', '.');
@@ -78,4 +80,5 @@ function moreTwoDecimals(float $value): bool
     }
 
     return false;
+}
 }

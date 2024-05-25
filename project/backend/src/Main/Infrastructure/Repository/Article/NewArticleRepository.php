@@ -20,11 +20,10 @@ class NewArticleRepository extends BaseDoctrine implements NewArticleInterface
     /**
      * @throws StoreException
      */
-    public function createData($data): array
+    public function createData($data): void
     {
         try {
             $this->createPost($data);
-            return ["creado correctamente"];
         } catch (\Exception $exc) {
             throw new StoreException("Error tabla database :" .$exc->getMessage(),$exc->getCode(),$exc);
         }
@@ -32,15 +31,17 @@ class NewArticleRepository extends BaseDoctrine implements NewArticleInterface
     }
     function createPost($data): void
     {
+        $tblArticulo = new TblArticulo();
+        $uuid = Uuid::uuid4()->toString();
         $author = $this->repository(TblAutor::class)->find(1);
         $img = $this->repository(TblImagen::class)->find(1);
-        $tblArticulo = new TblArticulo();
-        $tblArticulo->setUuid(Uuid::uuid4()->toString());
-        $tblArticulo->setTitulo($data['title']); // Changed from firstName to sentence
-        $tblArticulo->setFecha(new \DateTime('now')); // Changed from firstName to sentence
-        $tblArticulo->setContenido($data['content']); // Changed from firstName to sentence
-        $tblArticulo->setImagen($img); // Changed from firstName to sentence
-        $tblArticulo->setAutorId($author); // Changed from firstName to sentence
+
+        $tblArticulo->setUuid($uuid);
+        $tblArticulo->setTitulo($data['title']);
+        $tblArticulo->setFecha(new \DateTime('now'));
+        $tblArticulo->setContenido($data['content']);
+        $tblArticulo->setImagen($img);
+        $tblArticulo->setAutorId($author);
         $this->persist($tblArticulo);
     }
 }

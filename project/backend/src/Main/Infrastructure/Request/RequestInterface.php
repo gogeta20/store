@@ -8,6 +8,8 @@ interface RequestInterface
 {
     public function dataRequest(): array;
 
+    public function dataFull(): array;
+
     public function data(): array;
 
     public function routeParams(): array;

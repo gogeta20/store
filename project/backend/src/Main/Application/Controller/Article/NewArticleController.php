@@ -5,6 +5,7 @@ namespace App\Main\Application\Controller\Article;
 use App\Main\Application\UseCases\Command\Article\NewArticle\NewArticleCommand;
 use App\Main\Domain\Exception\StoreException;
 use App\Main\Infrastructure\Response\JsonApiResponse;
+use App\Shared\Application\AppConstants;
 use App\Shared\Domain\StandardApiResponse;
 use App\Shared\Infrastructure\Symfony\ApiController;
 use Exception;
@@ -22,19 +23,14 @@ class NewArticleController extends ApiController
         if (null !== $errors) {
             return JsonApiResponse::error(errors: $errors);
         }
+
         try {
-            $this->dispatch(
-                new NewArticleCommand($request->data())
-            );
+            $this->dispatch(NewArticleCommand::create($request->data()));
         }catch (\Exception $exception){
             throw new StoreException($exception->getMessage());
         }
 
-        return (new StandardApiResponse(
-            data: ['post created'],
-            message: 'success',
-            code: 200
-        ))->__invoke();
+        return JsonApiResponse::created($this->translator->translate(AppConstants::SUCCESS,[], 'basic'));
     }
 
     protected function exceptions(): array

@@ -24,6 +24,11 @@ class StandardRequest
         );
     }
 
+    public function dataFul(): array
+    {
+        return array_merge($this->request->data(), $this->request->routeParams());
+    }
+
     public function data(): array
     {
         return array_merge($this->request->data(), $this->request->routeParams());

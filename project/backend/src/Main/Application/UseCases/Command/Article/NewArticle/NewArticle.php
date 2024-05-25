@@ -14,9 +14,9 @@ final readonly class NewArticle
         private NewArticleInterface $newArticle,
     ) {}
 
-    public function __invoke(NewArticleCommand $command): array
+    public function __invoke(NewArticleCommand $command): void
     {
-        return $this->newArticle->createData($command->data);
+        $this->newArticle->createData($command->data);
     }
 
 }

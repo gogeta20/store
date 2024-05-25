@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Main\Application\Controller\Article;
 use App\Main\Infrastructure\Request\StandardRequest;
 use Symfony\Component\Validator\Constraints as Assert;
-final class NewArticleRequest extends StandardRequest
+class NewArticleRequest extends StandardRequest
 {
     protected function constraints(): Assert\Collection
     {
