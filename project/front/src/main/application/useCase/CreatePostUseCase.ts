@@ -1,24 +1,25 @@
 import { PostRepository } from '../../infrastructure/repositories/PostRepository.js';
-import type {Post} from "~/src/main/domain/entity/Post";
+import type {Article} from "~/src/main/domain/entity/Article";
 
 export class CreatePostUseCase {
-    async execute(postData: Post) {
-        const postRepository = new PostRepository();
 
-        if (!postData.title || !postData.content) {
-            throw new Error('Invalid post data');
-        }
+  async execute(dataSend: Article) {
+    const postRepository = new PostRepository();
 
-        // Creación del post y validación de los datos
-        const post = {
-            title: postData.title,
-            content: postData.content,
-            author : postData.author,
-            date : new Date(),
-            images : postData.images,
-            tags : postData.tags
-        };
+    this.verifyData(dataSend);
 
-        await postRepository.save(post);
+    await postRepository.save(dataSend);
+  }
+
+  private verifyData(dataSend: Article) {
+    if (
+      !dataSend.title ||
+      !dataSend.tags ||
+      !dataSend.author ||
+      !dataSend.images ||
+      !dataSend.content
+    ) {
+      throw new Error('Invalid post data');
     }
+  }
 }

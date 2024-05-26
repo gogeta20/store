@@ -20,9 +20,6 @@ class NewArticleRequest extends StandardRequest
                 'tags' => [
                     new Assert\NotBlank(normalizer: 'trim'),
                 ],
-                'date' => [
-                    new Assert\NotBlank(normalizer: 'trim'),
-                ],
                 'images' => [
                     new Assert\NotBlank(normalizer: 'trim'),
                 ],

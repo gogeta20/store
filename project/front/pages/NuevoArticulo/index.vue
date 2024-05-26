@@ -3,27 +3,27 @@ import InputBasic from "~/components/Input/InputBasic.vue";
 import HeaderArticle from "~/components/Article/HeaderArticle.vue";
 
 import PostController from '~/src/main/application/controller/PostController';
+import type { Article } from "~/src/main/domain/entity/Article";
 
 const dataPost = ref({
     title: '',
-    tags: '',
+    tags: [''],
     author: '',
-    images: '',
+    images: [''],
     titleImages: '',
     content: '',
 });
 
 function sendData(): void {
-    const post = {
-        title: "primer envio post",
-        content: "primer envio post",
-        author: "primer envio post",
-        date: new Date(),
-        images: ["primer envio post"],
-        tags: ["primer envio post"]
+    const article : Article = {
+      title:dataPost.value.title,
+      tags: dataPost.value.tags,
+      author:"Mauricio Vargas",
+      images: dataPost.value.images,
+      content:dataPost.value.content,
     };
 
-    PostController.createPost(post)
+    PostController.createPost(article)
 }
 </script>
 

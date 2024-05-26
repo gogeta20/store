@@ -10,13 +10,16 @@ use function json_last_error;
 
 class JsonTool
 {
+    /**
+     * @throws \JsonException
+     */
     function jsonDecode(string|bool $string): array|null
     {
         if (is_bool($string)) {
             return null;
         }
 
-        if (isJson($string)) {
+        if ($this->isJson($string)) {
             return json_decode($string, true, 512, JSON_THROW_ON_ERROR);
         }
 

@@ -8,20 +8,21 @@ namespace App\Main\Infrastructure\Request;
 //use Api\Shared\Domain\Aggregate\Customer\Customer\Customer;
 //use Api\Shared\Domain\Aggregate\Merchant\Merchant\Merchant;
 //use Symfony\Component\Security\Core\Secutity;
+use App\Shared\Tools\JsonTool;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RequestStack;
 //use Symfony\Component\Security\Core\User\UserInterface;
 
 use  App\Shared\Tools\ArrayTool;
-use function App\Shared\Tools\jsonDecode;
-use function App\Shared\Tools\jsonEncode;
 
 class SymfonyRequest implements RequestInterface
 {
+
     public function __construct(
-        private RequestStack $request,
-        private Security $security
+        private readonly RequestStack $request,
+        private Security              $security,
+        public $jt =  new JsonTool()
     ) {
     }
 
@@ -30,7 +31,7 @@ class SymfonyRequest implements RequestInterface
      */
     public function dataRequest(): array
     {
-        return jsonDecode(string: $this->currentRequestContent()) ?? [];
+        return $this->jt->jsonDecode(string: $this->currentRequestContent()) ?? [];
     }
 
     /**
@@ -38,7 +39,7 @@ class SymfonyRequest implements RequestInterface
      */
     public function data(): array
     {
-        $data = jsonDecode(string: $this->currentRequestContent()) ?? [];
+        $data = $this->jt->jsonDecode(string: $this->currentRequestContent()) ?? [];
 
         return array_merge(
             $data,
@@ -52,7 +53,7 @@ class SymfonyRequest implements RequestInterface
      */
     public function dataFull(): array
     {
-        $data = jsonDecode(string: $this->currentRequestContent()) ?? [];
+        $data = $this->jt->jsonDecode(string: $this->currentRequestContent()) ?? [];
 
         return array_merge(
             $data,
@@ -85,7 +86,7 @@ class SymfonyRequest implements RequestInterface
         $data = $this->data();
 
         if (ArrayTool::arrayKeyExists(key: 'filters', array: $data)) {
-            return jsonDecode(string: $data['filters']) ?? [];
+            return $this->jt->jsonDecode(string: $data['filters']) ?? [];
         }
 
         return [];
@@ -103,11 +104,11 @@ class SymfonyRequest implements RequestInterface
         }
 
         if ('GET' === $this->currentRequestMethod() && [] !== $this->currentRequest()->query->all()) {
-            return jsonEncode(array: $this->currentRequest()->query->all());
+            return $this->jt->jsonEncode(array: $this->currentRequest()->query->all());
         }
 
         if (str_contains($this->currentRequest()->headers->get('content-type', ''), 'multipart/form-data')) {
-            return jsonEncode(array: $this->currentRequest()->request->all());
+            return $this->jt->jsonEncode(array: $this->currentRequest()->request->all());
         }
 
         return $this->currentRequest()->getContent();
