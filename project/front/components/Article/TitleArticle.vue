@@ -1,4 +1,4 @@
-<script setup lang="ts" >
+<script setup lang="ts">
 const props = defineProps({
   title: {
     type: String,
@@ -10,21 +10,21 @@ const props = defineProps({
   },
   htag: {
     type: String,
-    default:'2',
+    default: '2',
   },
 });
 </script>
 <template>
   <div class="container-title-article">
-    <h2 v-if="htag === '2'" class="title-destacados">{{title}}</h2>
-    <h3  v-if="htag === '3'" class="title-destacados">{{title}}</h3>
-    <h4  v-if="htag === '4'" class="title-destacados">{{title}}</h4>
-    <p class="p-destacados">{{ description }} </p>
+    <h2 v-if="htag === '2'" class="title-destacados">{{ title }}</h2>
+    <h3 v-if="htag === '3'" class="title-destacados">{{ title }}</h3>
+    <h4 v-if="htag === '4'" class="title-destacados">{{ title }}</h4>
+    <p class="p-destacados">{{ description }}</p>
   </div>
 </template>
 
 <style scoped lang="scss">
-.container-title-article{
+.container-title-article {
   display: flex;
   flex-direction: column;
 }

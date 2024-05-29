@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, defineProps, defineEmits } from "vue";
-
+import type { FileImgList } from "~/src/main/domain/Notice";
 const props = defineProps({
   idInput: {
     type: String,
@@ -11,28 +11,34 @@ const props = defineProps({
     default: "",
   },
   modelValue: {
-    type: String,
-    default: "",
+    type: [],
   },
 });
-let inputValue = ref(props.modelValue);
-const updateModelValue = (e: any) => {
-  inputValue.value = e.target.value;
-  emit("update:modelValue", inputValue.value);
-};
-//
-const emit = defineEmits(["update:modelValue", "change"]);
-
-function onInputChange(e: any) {
-  console.log("test", e.target.value);
-  const files = e.target.files;
-  console.log(files);
-  // botonSubirArquivos.value = addFiles(allowedFiles.value, e.target.files);
-  // e.target.value = null;
-  inputValue.value = e.target.value;
-  emit("update:modelValue", inputValue.value);
-}
+let modelValueCopy = ref(props.modelValue);
 const count = ref(1);
+const emit = defineEmits(["update:modelValue", "change"]);
+const filesList: Ref<FileImgList[]> = ref([
+  { id: '', name: '', path: '' }
+]);
+
+const addTitleFile = (e: any) => {
+  let idInput = e.target.id;
+  filesList.value.forEach(element => {
+    if (element.id === idInput) {
+      element.name = e.target.value
+    }
+  });
+};
+
+function addFile(e: any) {
+  let nImg = filesList.value.length;
+  let item = { id: 'img-'+nImg, name: '', path : e.target.value }
+  filesList.value.push(
+    item
+  );
+  emit("update:modelValue", filesList.value);
+}
+
 function imagesResolve(action: string) {
   if (action == "add") {
     count.value++;
@@ -58,12 +64,12 @@ function imagesResolve(action: string) {
     <div class="container-input-basic">
       <label :for="idInput">{{ label }}:</label>
       <input v-for="n in count" id="file-upload" class="btn btn-outline-info file-input" type="file"
-        @change="onInputChange" />
+        @change="addFile" />
     </div>
     <div class="container-input-basic">
-      <label :for="idInput">Título para la imagen:</label>
-      <input class="input-images-name" v-for="n in count" type="text" v-model="inputValue" ref="chipInput"
-        @input="updateModelValue" />
+      <label>Título para la imagen:</label>
+      <input class="input-images-name" v-for="n in count" :key="n" :id="'img-'+n" type="text" ref="chipInput"
+        @input="addTitleFile" />
     </div>
   </div>
 

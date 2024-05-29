@@ -1,14 +1,14 @@
-import { PostRepository } from '../../infrastructure/repositories/PostRepository.js';
-import type {Article} from "~/src/main/domain/entity/Article";
+import { ArticlePostRepository } from '../../infrastructure/repositories/ArticlePostRepository.js';
+import type { Article } from "~/src/main/domain/entity/Article";
 
-export class CreatePostUseCase {
+export class CreateArticlePostUseCase {
 
   async execute(dataSend: Article) {
-    const postRepository = new PostRepository();
+    const articleRepository = new ArticlePostRepository();
 
     this.verifyData(dataSend);
 
-    await postRepository.save(dataSend);
+    await articleRepository.save(dataSend);
   }
 
   private verifyData(dataSend: Article) {
