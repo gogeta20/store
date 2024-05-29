@@ -11,8 +11,10 @@ use App\Shared\Domain\Bus\Query\QueryBus;
 use App\Shared\Domain\Bus\Query\Response;
 use App\Shared\Domain\Interfaces\LogInterface;
 use App\Shared\Domain\Interfaces\ParamsRequestInterface;
+use App\Shared\Domain\Interfaces\TranslateInterfaceCustom;
 use App\Shared\Domain\Parameters;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function Lambdish\Phunctional\each;
@@ -24,7 +26,7 @@ abstract class ApiController
         private readonly CommandBus                $commandBus,
         protected EventDispatcherInterface         $eventDispatcher,
         private ApiExceptionsHttpStatusCodeMapping $exceptionHandler,
-//        protected TranslatorInterface $translator,
+        protected TranslateInterfaceCustom         $translator,
         protected ParamsRequestInterface           $paramsRequest,
         protected readonly Parameters              $configurationParams,
         protected string                           $projectDir,

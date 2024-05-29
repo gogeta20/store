@@ -13,9 +13,9 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use function getenv;
 use function sprintf;
 
-class ContainerParam implements Parameters
+readonly class ContainerParam implements Parameters
 {
-    public function __construct(private readonly ContainerBagInterface|ParameterBagInterface $params)
+    public function __construct(private ContainerBagInterface|ParameterBagInterface $params)
     {
     }
 

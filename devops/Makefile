@@ -1,5 +1,8 @@
-# Makefile
+USER=1000
 
+
+
+#========================================
 .PHONY: help
 help: ## Muestra la ayuda de los objetivos disponibles
 	@echo "Uso: make [objetivo]"
@@ -35,7 +38,7 @@ back:
 	docker exec -it backend /bin/bash
 
 user-back:
-	docker exec -u 1000 -it backend /bin/bash
+	docker exec -u $(USER) -it backend /bin/bash
 
 cache:
 	docker exec backend sh -c "php bin/console cache:clear"
@@ -49,6 +52,15 @@ log-back:
 restart-apache:
 	docker exec backend sh -c "service apache2 restart"
 
+chown-config: #make chown-config file=doctrine.yaml
+	docker exec backend sh -c "chown -R www-data:www-data /var/www/html/$(file)"
+
+back-permission:
+	docker exec backend sh -c "chown -R www-data:www-data ."
+
+back-permission-755:
+	docker exec backend sh -c "chmod -R 777 tests"
+
 #========================================
 phpmyadmin:
 	docker exec -it phpmyadmin /bin/bash
@@ -58,10 +70,13 @@ log-phpmyadmin:
 
 #========================================
 frontend:
-	@docker-compose exec frontend sh
+	docker exec -it frontend sh
 
 packages-front:
 	@docker-compose exec frontend sh -c "chown -R node:node node_modules/"
+
+front-permission:
+	@docker-compose exec frontend sh -c "chown -R node:node ."
 
 user-front:
 	docker exec -u node -it frontend sh
@@ -79,7 +94,8 @@ db:
 f ?= default
 .PHONY: db-update
 
-db-update:
-	docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
+db-update: #make db-update f=mySql
+	docker exec db sh -c 'mysql -u itachi -pgbcv123M -e "SOURCE /var/www/html/sql/$(f).sql"'
+	#docker exec db sh -c 'mysql -u root -ptest -e "SOURCE /var/www/html/sql/$(f).sql"'
 
 #========================================

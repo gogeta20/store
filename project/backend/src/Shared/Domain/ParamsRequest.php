@@ -7,6 +7,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ParamsRequest implements ParamsRequestInterface
 {
+    const PARAMETERS = 'parameters';
+    const AUTH =    'Authorization';
+    const GET =     'GET';
+    const POST =    'POST';
+    const PUT =     'PUT';
+    const DELETE =  'DELETE';
 
     public function requestParameters(Request $request): array
     {
@@ -22,10 +28,10 @@ class ParamsRequest implements ParamsRequestInterface
 
     private function getParameters(string $method, Request $request, string $parameters)
     {
-        if ('GET' === $method) {
+        if (self::GET === $method) {
             $parameters = $this->getParametersGet($request, $parameters);
         }
-        if ('POST' === $method || 'PUT' === $method || 'DELETE' === $method) {
+        if (self::POST === $method || self::PUT === $method || self::DELETE === $method) {
             $parameters = $this->getParametersPost($request, $parameters);
         }
 
@@ -34,8 +40,8 @@ class ParamsRequest implements ParamsRequestInterface
 
     private function getParametersGet(Request $request, $parameters)
     {
-        if ($request->query->has('parameters')) {
-            $parameters = $request->query->get('parameters');
+        if ($request->query->has(self::PARAMETERS)) {
+            $parameters = $request->query->get(self::PARAMETERS);
         }
 
         return $parameters;
@@ -52,7 +58,7 @@ class ParamsRequest implements ParamsRequestInterface
 
     public function idSession(Request $request): string
     {
-        return $request->headers->get('Authorization');
+        return $request->headers->get(self::AUTH);
     }
 
     public function requestParametersBody(Request $request): array|string

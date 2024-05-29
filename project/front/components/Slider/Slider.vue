@@ -1,0 +1,139 @@
+<script setup lang="ts">
+import {SineWaves} from "sine-waves/sine-waves.min";
+onMounted(()=>{
+  let waves = new SineWaves({
+    el: document.getElementById('waves'),
+
+    speed: 4,
+
+    width: function () {
+      return window.innerWidth-500;
+    },
+
+    height: function () {
+      return window.innerHeight/2;
+    },
+
+    ease: 'SineInOut',
+
+    wavesWidth: '70%',
+
+    waves: [
+      {
+        timeModifier: 4,
+        lineWidth: 1,
+        amplitude: -25,
+        wavelength: 25
+      },
+      {
+        timeModifier: 2,
+        lineWidth: 2,
+        amplitude: -50,
+        wavelength: 50
+      },
+      {
+        timeModifier: 1,
+        lineWidth: 1,
+        amplitude: -100,
+        wavelength: 100
+      },
+      {
+        timeModifier: 0.5,
+        lineWidth: 1,
+        amplitude: -150,
+        wavelength: 150
+      },
+      // {
+      //   timeModifier: 0.25,
+      //   lineWidth: 2,
+      //   amplitude: -400,
+      //   wavelength: 400
+      // }
+    ],
+
+    // Called on window resize
+    resizeEvent: function () {
+      var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
+      gradient.addColorStop(0, "rgba(80, 30, 145, 0)");
+      gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.5)");
+      gradient.addColorStop(1, "rgba(80, 30, 145, 0)");
+
+      var index = -1;
+      var length = this.waves.length;
+      while (++index < length) {
+        this.waves[index].strokeStyle = gradient;
+      }
+
+      // Clean Up
+      index = void 0;
+      length = void 0;
+      gradient = void 0;
+    }
+  });
+
+})
+</script>
+<template>
+  <div class="slider-one">
+    <canvas id="waves"></canvas>
+    <div class="container">
+      <div class="splash__center">
+        <h1 class="splash__title">Moto500</h1>
+        <button class="splash__btn">vamos alli</button>
+      </div>
+    </div>
+  </div>
+</template>
+<style scoped lang="scss">
+.slider-one {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(1deg, var(--purple-light), var(--purple-second)) no-repeat center center fixed;
+  border-radius: 10px;
+  margin: auto;
+  width: 98%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.splash__center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.splash__title {
+  text-align: center;
+  color: white;
+  font-size: 42px;
+  font-weight: 400;
+}
+
+.splash__btn {
+  width: 150px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 15px;
+  margin-top: 30px;
+  font-size: 18px;
+  border-radius: 30px;
+}
+
+#waves {
+  position: absolute;
+  z-index: 0;
+  height: 500px;
+  background-color: transparent;
+  opacity: 0.5;
+}
+
+</style>

@@ -1,1 +1,16 @@
-@import 'bootstrap/scss/bootstrap';
+//@import "primevue/resources/themes/aura-dark-teal/theme.css";
+@import "bootstrap/dist/css/bootstrap.css";
+@import "reset";
+@import "variables";
+@import "base";
+@import "wizard";
+@import "dialog";
+@import "animations";
+/* External CSS */
+
+
+//@import "primevue/resources/primevue.css";
+//@import "@coreui/coreui/scss/coreui";
+//@import '@coreui/coreui/dist/css/coreui.min.css';
+//@import "bootstrap-vue/dist/bootstrap-vue.css";
+//@import "primeflex/primeflex.scss";

@@ -5,7 +5,7 @@
 #    type: attribute
 main:
   resource:
-    '../src/Main/Infrastructure/Routing/routing.xml'
+    '../src/Main/Application/Routing/routing.xml'
 #    '../src/Shared/Infrastructure/Routing/routing.xml'
 
 #index:

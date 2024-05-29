@@ -12,7 +12,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function Lambdish\Phunctional\get;
 
-final class ApiExceptionsHttpStatusCodeMapping
+class ApiExceptionsHttpStatusCodeMapping
 {
     private const DEFAULT_STATUS_CODE = Response::HTTP_INTERNAL_SERVER_ERROR;
     private array $exceptions = [

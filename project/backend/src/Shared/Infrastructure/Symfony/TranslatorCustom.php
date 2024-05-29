@@ -22,7 +22,6 @@ class TranslatorCustom implements TranslateInterfaceCustom
     public function translate(?string $string, array $parameters = [], string $domain = null, string $locale = null): string
     {
         if (!$locale) {
-//            $locale = $this->requestStack->getSession()->get('_locale');
             $locale = $this->translator->getLocale();
         }
         return $this->translator->trans($string, $parameters, $domain, $locale);
