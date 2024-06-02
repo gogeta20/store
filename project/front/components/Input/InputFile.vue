@@ -32,7 +32,7 @@ const addTitleFile = (e: any) => {
 
 function addFile(e: any) {
   let nImg = filesList.value.length;
-  let item = { id: 'img-'+nImg, name: '', path : e.target.value }
+  let item = { id: 'img-' + nImg, name: '', path: e.target.value }
   filesList.value.push(
     item
   );
@@ -68,7 +68,7 @@ function imagesResolve(action: string) {
     </div>
     <div class="container-input-basic">
       <label>Título para la imagen:</label>
-      <input class="input-images-name" v-for="n in count" :key="n" :id="'img-'+n" type="text" ref="chipInput"
+      <input class="input-images-name" v-for="n in count" :key="n" :id="'img-' + n" type="text" ref="chipInput"
         @input="addTitleFile" />
     </div>
   </div>

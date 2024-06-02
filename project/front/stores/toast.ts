@@ -9,7 +9,7 @@ export const toastAppStore = defineStore('toastStore', {
     class: "toast-info bg-info",
     code: 200,
     life: 3000,
-    view: true,
+    view: false,
     list: [
       "bg-primary",
       "bg-secondary",

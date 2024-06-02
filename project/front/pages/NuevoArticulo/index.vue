@@ -43,7 +43,7 @@ function sendData(): void {
 </script>
 
 <template>
-  <!-- {{ dataPost }} -->
+  {{ dataPost }}
   <div class="container-article-main">
     <div class="mini-card module" id="mini-post-302186">
       <HeaderArticle></HeaderArticle>
