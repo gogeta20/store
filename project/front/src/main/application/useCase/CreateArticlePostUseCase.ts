@@ -17,6 +17,7 @@ export class CreateArticlePostUseCase {
       !dataSend.tags ||
       !dataSend.author ||
       !dataSend.images ||
+      !dataSend.category ||
       !dataSend.content
     ) {
       throw new Error('Invalid post data');

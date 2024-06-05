@@ -5,10 +5,14 @@ export const userAppStore = defineStore('userStore', {
     name: 'Mauricio Vargas',
     email: '',
     login: '',
+    id: 1,
   }),
   actions: {
     getName() {
       return this.name;
+    },
+    getId() {
+      return this.id;
     },
   },
 });

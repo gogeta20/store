@@ -14,9 +14,8 @@ const toastStore = toastAppStore();
 const dataPost = ref({
   title: '',
   tags: [''],
-  author: '',
+  author: 0,
   images: [''],
-  titleImages: '',
   content: '',
   category: '',
 });
@@ -25,20 +24,13 @@ function sendData(): void {
   const article: Article = {
     title: dataPost.value.title,
     tags: dataPost.value.tags,
-    author: userStore.getName(),
+    author: userStore.getId(),
     images: dataPost.value.images,
     content: dataPost.value.content,
     category: dataPost.value.category,
   };
 
   CreateArticleController.send(article);
-  toastStore.onShowToast({
-    title: "title test",
-    message: 'test toast',
-    type: "success",
-    code: 200,
-    life: 3000
-  });
 }
 </script>
 

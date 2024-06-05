@@ -1,12 +1,12 @@
 export class Article {
     title: string;
     tags: string[];
-    author: string;
+    author: number;
     images: string[];
     content: string;
     category: string;
 
-    constructor(title: string, author: string, content: string, images: string[], tags: string[], category: string) {
+  constructor(title: string, author: number, content: string, images: string[], tags: string[], category: string) {
         this.title = title;
         this.author = author;
         this.content = content;
