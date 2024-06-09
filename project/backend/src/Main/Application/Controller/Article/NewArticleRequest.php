@@ -24,7 +24,10 @@ class NewArticleRequest extends StandardRequest
                     new Assert\NotBlank(normalizer: 'trim'),
                 ],
                 'images' => [
-                    new Assert\NotBlank(normalizer: 'trim'),
+                    new Assert\Optional(),
+                ],
+                'files' => [
+                    new Assert\Optional(),
                 ],
                 'author' => [
                     new Assert\NotBlank(normalizer: 'trim'),

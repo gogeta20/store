@@ -16,7 +16,7 @@ final readonly class NewArticle
 
     public function __invoke(NewArticleCommand $command): void
     {
-        $this->newArticle->createData($command->data);
+        $this->newArticle->createData($command->data, $command->files, $command->upload_dir);
     }
 
 }

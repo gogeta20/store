@@ -8,15 +8,17 @@ use App\Shared\Domain\Bus\Command\Command;
 
 readonly class NewArticleCommand implements Command
 {
-    public static function create(array $parameters): self
-    {
-        return new self(
-            data: $parameters,
-        );
-    }
-
     public function __construct(
         public array $data,
+        public array $files,
+        public string $upload_dir
     ) {
     }
+
+    public static function create(array $parameters, array $files, string $upload_dir): self
+    {
+        return new self(data: $parameters,files: $files, upload_dir: $upload_dir);
+    }
+
+
 }

@@ -18,7 +18,7 @@ let modelValueCopy = ref(props.modelValue);
 const count = ref(1);
 const emit = defineEmits(["update:modelValue", "change"]);
 const filesList: Ref<FileImgList[]> = ref([
-  { id: '', name: '', path: '' }
+  { id: '', name: '', path: '', files: [] }
 ]);
 
 const addTitleFile = (e: any) => {
@@ -31,8 +31,13 @@ const addTitleFile = (e: any) => {
 };
 
 function addFile(e: any) {
+  const files = e.target.files;
+  if (!files) {
+    return;
+  }
   let nImg = filesList.value.length;
-  let item = { id: 'img-' + nImg, name: '', path: e.target.value }
+  let item = { id: 'img-' + nImg, name: '', path: e.target.value, files: files }
+
   filesList.value.push(
     item
   );

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Symfony;
 
 use App\Shared\Domain\Parameters;
-use App\Shared\Infrastructure\ContainerParamException;
+use Exception;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
@@ -19,6 +19,9 @@ readonly class ContainerParam implements Parameters
     {
     }
 
+    /**
+     * @throws Exception
+     */
     public function get(string $param): mixed
     {
         try {
@@ -26,8 +29,8 @@ readonly class ContainerParam implements Parameters
                 return $this->params->get($param);
             }
             return $this->getParamValueFromEnv($param);
-        } catch (ContainerExceptionInterface|NotFoundExceptionInterface|ContainerParamException $exception) {
-            throw new ContainerParamException(
+        } catch (ContainerExceptionInterface|NotFoundExceptionInterface| Exception $exception) {
+            throw new Exception(
                 message: sprintf('Parametro %s non atopado. Excepcion: %s', $param, $exception->getMessage()),
                 code: $exception->getCode(),
             //previous: $exception
@@ -41,23 +44,26 @@ readonly class ContainerParam implements Parameters
     }
 
     /**
-     * @throws ContainerParamException
+     * @throws Exception
      */
     private function getParamValueFromEnv(string $param): string
     {
         $param_value = getenv($param);
         if ($param_value === false) {
-            throw new ContainerParamException(sprintf('Non se puido obter o parámetro: %s', $param));
+            throw new Exception(sprintf('Non se puido obter o parámetro: %s', $param));
         }
         return $param_value;
     }
 
+    /**
+     * @throws Exception
+     */
     public function all()
     {
         try {
             return $this->params->all();
-        } catch (ContainerExceptionInterface|NotFoundExceptionInterface|ContainerParamException $exception) {
-            throw new ContainerParamException(
+        } catch (ContainerExceptionInterface|NotFoundExceptionInterface|Exception $exception) {
+            throw new Exception(
                 message: sprintf('Parametro %s non atopado. Excepcion: %s', "", $exception->getMessage()),
                 code: $exception->getCode(),
             //previous: $exception

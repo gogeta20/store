@@ -16,20 +16,34 @@ const dataPost = ref({
   tags: [''],
   author: 0,
   images: [''],
+  files: [],
   content: '',
   category: '',
 });
 
 function sendData(): void {
+  let filesArray: any = [];
+  let imagesArray: any = [];
+
+  dataPost.value.images.forEach((element) => {
+    if (element.files && element.files.length > 0) {
+      console.log(element)
+      console.log('element.files[0]', element.files[0])
+      filesArray.push(element.files[0]);
+      imagesArray.push({ id: element.id, name: element.name, path: element.path });
+    }
+  });
+
   const article: Article = {
     title: dataPost.value.title,
     tags: dataPost.value.tags,
     author: userStore.getId(),
-    images: dataPost.value.images,
+    files: filesArray,
+    images: imagesArray,
     content: dataPost.value.content,
     category: dataPost.value.category,
   };
-
+  console.log(article)
   CreateArticleController.send(article);
 }
 </script>

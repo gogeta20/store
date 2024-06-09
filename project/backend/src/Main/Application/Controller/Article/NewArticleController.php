@@ -6,7 +6,6 @@ use App\Main\Application\UseCases\Command\Article\NewArticle\NewArticleCommand;
 use App\Main\Domain\Exception\StoreException;
 use App\Main\Infrastructure\Response\JsonApiResponse;
 use App\Shared\Application\AppConstants;
-use App\Shared\Domain\StandardApiResponse;
 use App\Shared\Infrastructure\Symfony\ApiController;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,7 +24,12 @@ class NewArticleController extends ApiController
         }
 
         try {
-            $this->dispatch(NewArticleCommand::create($request->data()));
+            $this->dispatch(NewArticleCommand::create(
+                    $request->data(),
+                    $request->files(),
+                    $this->configurationParams->get('upload_dir')
+                )
+            );
         }catch (\Exception $exception){
             throw new StoreException($exception->getMessage());
         }
