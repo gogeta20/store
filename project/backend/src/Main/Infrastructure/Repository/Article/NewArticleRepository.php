@@ -25,7 +25,11 @@ class NewArticleRepository extends BaseDoctrine implements NewArticleInterface
     {
         try {
             $files = $files['files'];
-            $this->createPost($data, $files,$upload_dir);
+
+            $movedFiles = $this->saveFiles($data, $files, $upload_dir);
+            $this->verifyFiles($movedFiles, $upload_dir);
+
+            $this->createPost($data, $upload_dir, $movedFiles);
         } catch (Exception $exc) {
             throw new StoreException("Error tabla database :" .$exc->getMessage(),$exc->getCode(),$exc);
         }
@@ -35,11 +39,8 @@ class NewArticleRepository extends BaseDoctrine implements NewArticleInterface
     /**
      * @throws Exception
      */
-    function createPost($data, $files, $upload_dir): void
+    function createPost($data, $upload_dir, $movedFiles): void
     {
-        $movedFiles = $this->saveFiles($data, $files,$upload_dir);
-        $this->verifyFiles($movedFiles, $upload_dir);
-
         try {
             $tblArticulo = new TblArticulo();
             $uuid = Uuid::uuid4()->toString();
@@ -63,12 +64,12 @@ class NewArticleRepository extends BaseDoctrine implements NewArticleInterface
     {
         $dataImages = json_decode($data['images']);
         $movedFiles = [];
-        foreach ($files as $f) {
+        foreach ($files as $key => $f) {
             $img = new TblImagen();
             $uuid = Uuid::uuid4()->toString();
             $img->setUuid($uuid);
-            $img->setTitulo($f->getClientOriginalName());
-            $img->setUrl($f->getRealPath());
+            $img->setTitulo($dataImages[$key]['title']);
+            $img->setUrl($f->getClientOriginalName());
             $img->setDescripcion('descripcion');
             $fileName = md5(uniqid()) . '.' . $f->guessExtension();
             if($f->move($upload_dir,$fileName)){

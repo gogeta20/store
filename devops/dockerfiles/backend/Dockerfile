@@ -17,6 +17,7 @@ RUN apt-get update \
     && apt-get install -y unzip \
     && apt-get install -y libonig-dev \
     && apt-get install -y tree \
+    && apt-get install -y iputils-ping \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install zip
 

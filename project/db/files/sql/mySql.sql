@@ -7,13 +7,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 -- CREATE USER 'itachi'@'localhost' IDENTIFIED BY 'gbcv123M';
-CREATE USER 'itachi'@'%' IDENTIFIED BY 'gbcv123M';
+# CREATE USER 'itachi'@'%' IDENTIFIED BY 'gbcv123M';
 
-DROP DATABASE IF EXISTS articuloDualDB;
-CREATE DATABASE articuloDualDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+# DROP DATABASE IF EXISTS articuloDualDB;
+# CREATE DATABASE articuloDualDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-GRANT ALL PRIVILEGES ON articuloDualDB.* TO 'itachi'@'%';
-FLUSH PRIVILEGES;
+# GRANT ALL PRIVILEGES ON articuloDualDB.* TO 'itachi'@'%';
+# FLUSH PRIVILEGES;
 
 USE articuloDualDB;
 

@@ -25,10 +25,8 @@ function sendData(): void {
   let filesArray: any = [];
   let imagesArray: any = [];
 
-  dataPost.value.images.forEach((element) => {
+  dataPost.value.images.forEach((element:any) => {
     if (element.files && element.files.length > 0) {
-      console.log(element)
-      console.log('element.files[0]', element.files[0])
       filesArray.push(element.files[0]);
       imagesArray.push({ id: element.id, name: element.name, path: element.path });
     }
@@ -43,7 +41,6 @@ function sendData(): void {
     content: dataPost.value.content,
     category: dataPost.value.category,
   };
-  console.log(article)
   CreateArticleController.send(article);
 }
 </script>

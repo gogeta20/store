@@ -59,7 +59,13 @@ back-permission:
 	docker exec backend sh -c "chown -R www-data:www-data ."
 
 back-permission-755:
-	docker exec backend sh -c "chmod -R 777 tests"
+	docker exec backend sh -c "chmod -R 777 /var/www"
+
+ ip ?= default
+.PHONY: xdebug
+xdebug: ## 🆘⛑ Actualizamos la ip de escucha de xdebug. ip={}
+	docker exec backend sh -c "sed -i 's|xdebug.client_host =.*|xdebug.client_host =$(ip)|g' /var/www/shared/docker-php-ext-xdebug.ini && \
+	cp /var/www/shared/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 
 #========================================
 phpmyadmin:

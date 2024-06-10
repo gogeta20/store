@@ -21,6 +21,9 @@ services:
       - db
     networks:
       - default
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   db:
     container_name: db
     image: mysql
@@ -48,7 +51,7 @@ services:
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: test
-      MYSQL_ROOT_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: itachi
     # volumes:
     #   - ../conf/phpmyadmin/000-default.conf:/etc/apache2/sites-available/000-default.conf
   frontend:
