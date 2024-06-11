@@ -15,6 +15,8 @@ interface BaseRepositoryInterface
     public function connection(): Connection;
 
     public function persist($entity): void;
+    public function persistOnly($entity): void;
+    public function flushOnly(): void;
 
     public function remove($entity): void;
 

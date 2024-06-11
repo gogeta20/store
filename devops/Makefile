@@ -1,7 +1,5 @@
 USER=1000
 
-
-
 #========================================
 .PHONY: help
 help: ## Muestra la ayuda de los objetivos disponibles

@@ -14,6 +14,7 @@
 **/zips/**
 **.zip
 **.log
+**/uploads/**
 
 #front
 **/node_modules/**

@@ -35,6 +35,16 @@ abstract class BaseDoctrine implements BaseRepositoryInterface
         $this->entityManager->flush($entity);
     }
 
+    public function persistOnly($entity): void
+    {
+        $this->entityManager->persist($entity);
+    }
+
+    public function flushOnly(): void
+    {
+        $this->entityManager->flush();
+    }
+
     public function remove($entity): void
     {
         $this->entityManager->remove($entity);
