@@ -7,9 +7,9 @@ import MaqintHeader from "~/components/Navbar/MaqintHeader.vue";
   <section class="bh-main__page" :class="[{ 'bh-main__page--full-width': mainStore.openSidebar }]">
     <MaqintHeader />
     <section class="bh-section-main">
-      <slot></slot> />
+      <slot></slot>
     </section>
-    <Footer></Footer>/>
+    <Footer></Footer>
   </section>
 </template>
 

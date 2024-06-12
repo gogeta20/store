@@ -38,6 +38,17 @@ h6 {
   }
 }
 
+.bh-main__page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bh-section-main {
+  flex: 1
+}
+
+
 .titleSection {
   margin-bottom: 1.5rem;
   color: var(--primary-color);
