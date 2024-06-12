@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MaqintMenu from "~/components/Navbar/MaqintMenu.vue";
-import { mainAppStore} from "~/stores/website";
+import { mainAppStore } from "~/stores/website";
 const mainStore = mainAppStore()
 defineProps({
   isOpenSideBar: {
@@ -46,6 +46,14 @@ const myRoutes = reactive([
         isVisible: true,
         children: [],
         type: 'third',
+      },
+      {
+        id: "2.3",
+        title: "login",
+        path: "/login",
+        isVisible: true,
+        children: [],
+        type: 'four',
       },
     ],
     type: 'main'
@@ -121,9 +129,10 @@ const myRoutes = reactive([
 </script>
 <template>
   <aside class="bh-sidebar" :class="[{ 'bh-sidebar--hidden': isOpenSideBar }]">
-    <div  class="bh-header__logo">
+    <div class="bh-header__logo">
       <router-link to="/">
-        <img v-if="mainStore.logoImage" :alt="mainStore.nombreApp" :src="mainStore.imgLogo" lazy width="130" height="30" />
+        <img v-if="mainStore.logoImage" :alt="mainStore.nombreApp" :src="mainStore.imgLogo" lazy width="130"
+          height="30" />
         <h1 v-else class="name-page-h1">{{ mainStore.nombreApp }}</h1>
       </router-link>
     </div>
@@ -140,7 +149,8 @@ const myRoutes = reactive([
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  &__logo{
+
+  &__logo {
     border-bottom: solid 1px var(--purple-second);
     margin-bottom: 1rem;
   }
@@ -195,7 +205,7 @@ const myRoutes = reactive([
   }
 }
 
-.name-page-h1{
+.name-page-h1 {
   margin: 0;
   height: var(--header-height);
   font-size: 1.5rem;
@@ -205,7 +215,7 @@ const myRoutes = reactive([
   //font-family: "Monospace", "Arial", "serif";
 }
 
-.name-page-h1:hover{
+.name-page-h1:hover {
   background: var(--resaltado);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

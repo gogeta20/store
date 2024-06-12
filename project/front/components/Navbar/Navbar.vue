@@ -4,13 +4,13 @@ const mainStore = mainAppStore()
 import MaqintHeader from "~/components/Navbar/MaqintHeader.vue";
 </script>
 <template>
-    <section class="bh-main__page" :class="[{ 'bh-main__page--full-width': mainStore.openSidebar }]">
-      <MaqintHeader />
-      <section class="bh-sectio n-main">
-        <slot />
-      </section>
-      <Footer />
+  <section class="bh-main__page" :class="[{ 'bh-main__page--full-width': mainStore.openSidebar }]">
+    <MaqintHeader />
+    <section class="bh-section-main">
+      <slot></slot> />
     </section>
+    <Footer></Footer>/>
+  </section>
 </template>
 
 

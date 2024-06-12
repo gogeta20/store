@@ -66,6 +66,15 @@ useHead({
   }
 }
 
+.bh-main__page {
+  display: flex;
+  flex-direction: column;
+}
+
+.bh-section-main {
+  flex: 1
+}
+
 .btn-fixed {
   position: fixed;
   bottom: 20px;
