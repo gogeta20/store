@@ -25,7 +25,7 @@ function sendData(): void {
   let filesArray: any = [];
   let imagesArray: any = [];
 
-  dataPost.value.images.forEach((element:any) => {
+  dataPost.value.images.forEach((element: any) => {
     if (element.files && element.files.length > 0) {
       filesArray.push(element.files[0]);
       imagesArray.push({ id: element.id, name: element.name, path: element.path });
