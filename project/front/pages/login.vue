@@ -1,3 +1,22 @@
+<script lang="ts" setup>
+import CreateArticleController from '~/src/main/application/controller/CreateArticlePostController';
+import { userAppStore } from '~/stores/user';
+const userStore = userAppStore();
+
+const user = ref({
+  username: '',
+  password: '',
+});
+
+const login = async () => {
+
+
+  CreateArticleController.send(user);
+  // TODO send user Data to the login endpoint and redirect if  successful
+};
+</script>
+ <!--  -->
+ <!--  -->
 <template>
   <div class="container-article-main">
     <div class="container-blue">
@@ -16,14 +35,5 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
-const user = ref({
-  username: '',
-  password: '',
-});
 
-const login = async () => {
-  // TODO send user Data to the login endpoint and redirect if  successful
-};
-</script>
 <style scoped lang="scss"></style>

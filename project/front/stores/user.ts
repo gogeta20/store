@@ -4,7 +4,7 @@ export const userAppStore = defineStore('userStore', {
   state: () => ({
     name: 'Mauricio Vargas',
     email: '',
-    login: '',
+    login: false,
     id: 1,
   }),
   actions: {
@@ -14,5 +14,8 @@ export const userAppStore = defineStore('userStore', {
     getId() {
       return this.id;
     },
+    isLogin() {
+      return this.login;
+    }
   },
 });
