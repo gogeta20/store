@@ -1,6 +1,9 @@
 <script lang="ts" setup>
+import TitleArticle from '~/components/Article/TitleArticle.vue';
 import LoginController from '~/src/main/application/controller/LoginPostController';
 import { userAppStore } from '~/stores/user';
+import { UtilHelper } from '~/src/core/utilities/UtilHelper';
+
 const userStore = userAppStore();
 
 const user = ref({
@@ -10,32 +13,29 @@ const user = ref({
 
 const login = async () => {
 
-  LoginController.send({
-    'user': user.value.username,
-    'pass': user.value.password
-  });
+  if (UtilHelper.isString(user.value.username) && UtilHelper.isString(user.value.password)) {
+    LoginController.send({
+      'user': user.value.username,
+      'pass': user.value.password
+    });
+  }
 
 };
 </script>
- <!--  -->
- <!--  -->
+<!--  -->
+<!--  -->
 <template>
   <div class="container-article-main">
     <div class="container-blue">
-      <div class="title">
-        <h2>Login</h2>
-      </div>
+      <TitleArticle title="Ingresa tus datos"></TitleArticle>
       <div class="container form">
-        <label for="uname"><b>Username</b></label>
-        <input v-model="user.username" type="text" class="input" placeholder="Enter Username" name="uname" required />
-
-        <label for="psw"><b>Password</b></label>
-        <input v-model="user.password" type="password" class="input" placeholder="Enter Password" name="psw" required />
-
-        <button @click.prevent="login" class="button">Login</button>
+        <InputBasic id-input="user" label="Usuario" v-model="user.username"></InputBasic>
+        <InputBasic id-input="pass" label="Contraseña" v-model="user.password"></InputBasic>
+        <button class="btn btn-outline-info" @click.prevent="login">Enviar</button>
       </div>
     </div>
   </div>
 </template>
-
+<!--  -->
+<!--  -->
 <style scoped lang="scss"></style>
