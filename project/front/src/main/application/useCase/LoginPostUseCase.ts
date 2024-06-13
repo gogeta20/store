@@ -8,14 +8,14 @@ export class LoginPostUseCase {
 
     this.verifyData(dataSend);
 
-    await loginRepository.save(dataSend);
+    await loginRepository.send(dataSend);
   }
 
   private verifyData(dataSend: User) {
 
     if (!dataSend.user || dataSend.pass) {
       throw new Error('Invalid post data');
-    }  
+    }
 
   }
 }
