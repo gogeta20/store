@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import CreateArticleController from '~/src/main/application/controller/CreateArticlePostController';
+import LoginController from '~/src/main/application/controller/LoginPostController';
 import { userAppStore } from '~/stores/user';
 const userStore = userAppStore();
 
@@ -10,9 +10,11 @@ const user = ref({
 
 const login = async () => {
 
+  LoginController.send({
+    'user': user.value.username,
+    'pass': user.value.password
+  });
 
-  CreateArticleController.send(user);
-  // TODO send user Data to the login endpoint and redirect if  successful
 };
 </script>
  <!--  -->
