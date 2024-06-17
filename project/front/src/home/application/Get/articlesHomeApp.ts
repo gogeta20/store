@@ -8,10 +8,10 @@ export function articlesHomeApp() {
             return data;
             // return createPresentacionDetalleObject(data);
         } catch (error) {
-            console.log("test");
+            // console.log("test");
             return null;
         } finally {
-            console.log("test finally");
+            // console.log("test finally");
         }
     }
 

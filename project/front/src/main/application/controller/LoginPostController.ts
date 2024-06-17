@@ -24,7 +24,6 @@ export default {
         code: 200,
         life: 3000
       });
-      // throw error;
     }
   }
 };

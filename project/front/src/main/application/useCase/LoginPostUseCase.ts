@@ -13,7 +13,7 @@ export class LoginPostUseCase {
 
   private verifyData(dataSend: User) {
 
-    if (!dataSend.user || dataSend.pass) {
+    if (!dataSend.user || !dataSend.pass) {
       throw new Error('Invalid post data');
     }
 

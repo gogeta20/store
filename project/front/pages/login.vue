@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+definePageMeta({
+  middleware: ["auth"],
+  // layout: false,
+});
 import TitleArticle from '~/components/Article/TitleArticle.vue';
 import LoginController from '~/src/main/application/controller/LoginPostController';
 import { userAppStore } from '~/stores/user';
