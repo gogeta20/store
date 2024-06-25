@@ -1,6 +1,13 @@
-.container-input-basic{
-  display:flex;
+.container-input-basic {
+  display: flex;
   flex-direction: column;
   flex: 1;
   gap: .5rem;
+}
+
+.bg-error {
+  background-color: oklab(0.59 0.19 0.07) !important;
+  padding: .5rem;
+  border-radius: .5rem;
+  margin: 1rem 0;
 }

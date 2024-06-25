@@ -3,7 +3,6 @@ import { articlesHomeApp } from '~/src/home/application/Get/articlesHomeApp';
 import Slider from "~/components/Slider/Slider.vue";
 import News from "~/components/Article/News.vue";
 import Features from "~/components/Article/Features.vue";
-import Toast from '~/components/Toast/Toast.vue';
 
 useHead({
   title: 'Home',

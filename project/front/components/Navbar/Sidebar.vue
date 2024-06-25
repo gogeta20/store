@@ -47,14 +47,6 @@ const myRoutes = reactive([
         children: [],
         type: 'third',
       },
-      {
-        id: "2.3",
-        title: "login",
-        path: "/login",
-        isVisible: true,
-        children: [],
-        type: 'four',
-      },
     ],
     type: 'main'
   },

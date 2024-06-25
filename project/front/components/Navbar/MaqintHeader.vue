@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 
-import {mainAppStore} from "~/stores/website";
+import { mainAppStore } from "~/stores/website";
+import { userAppStore } from "~/stores/user";
 const mainStore = mainAppStore();
+const userStore = userAppStore();
 import { defineComponent, onUnmounted, ref } from "vue";
 
 defineProps({
@@ -50,6 +52,10 @@ const handlerLogout = () => {
   isOpenLogoutConfirm.value = false;
 };
 
+const login = computed(() => {
+  return userStore.login
+})
+
 </script>
 <template>
   <MaqintConfimLogout :visible="isOpenLogoutConfirm" @cancelLogout="handlerLogout" />
@@ -62,29 +68,14 @@ const handlerLogout = () => {
         <nav>
           <ul class="menu-header__ul">
             <li>
-                <router-link
-                    to="/nuevoArticulo"
-                    class="bh-base-router-link"
-                    aria-hidden="true"
-                    v-bind="$attrs">
-                    <!--    <FontAwesomeIcon v-if="icon" :icon="icon" :title="nombre" :class="iconClass" />-->
-                    <span>Crear Articulo </span>
-                </router-link>
+              <router-link to="/login" class="bh-base-router-link" aria-hidden="true" v-bind="$attrs">
+                <span>Login </span>
+              </router-link>
             </li>
-            <li>
-              dos
-            </li>
-            <li>
-              tres
-            </li>
-            <li>
-              tres
-            </li>
-            <li>
-              tres
-            </li>
-            <li>
-              tres tres tres
+            <li v-if="!login">
+              <router-link to="/nuevoArticulo" class="bh-base-router-link" aria-hidden="true" v-bind="$attrs">
+                <span>Crear Articulo </span>
+              </router-link>
             </li>
           </ul>
         </nav>
@@ -188,6 +179,7 @@ const handlerLogout = () => {
       //transform: scale(0.9);
       //transform: rotate(360deg);
     }
+
     &:focus {
       outline: none;
       transition: all 1s ease;
@@ -195,8 +187,9 @@ const handlerLogout = () => {
     }
   }
 }
-.menu-header{
-  &__ul{
+
+.menu-header {
+  &__ul {
     display: flex;
     gap: 2rem;
   }
@@ -308,12 +301,15 @@ hr {
   .bh-controls {
     flex: 1;
   }
+
   .bh-dropdown {
     flex: 1;
   }
+
   .bh-profile__info {
     display: flex;
   }
+
   .bh-logout {
     display: flex;
   }

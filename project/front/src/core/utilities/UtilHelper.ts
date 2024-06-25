@@ -41,12 +41,7 @@ export class UtilHelper {
    * Devuelve si el valor es un string pero con valor vacio o nulo
    */
   public static isNullOrEmpty(data: string): boolean {
-    return !(
-      UtilHelper.isDefined(data) &&
-      data !== null &&
-      UtilHelper.isString(data) &&
-      data.trim().length > 0
-    );
+    return !(UtilHelper.isDefined(data) && data !== null && UtilHelper.isString(data) && data.trim().length > 0);
   }
 
   /**

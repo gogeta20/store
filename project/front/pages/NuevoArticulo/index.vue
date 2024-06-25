@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ["auth"],
+  // layout: false,
+});
 import InputBasic from '~/components/Input/InputBasic.vue';
 import HeaderArticle from '~/components/Article/HeaderArticle.vue';
 
