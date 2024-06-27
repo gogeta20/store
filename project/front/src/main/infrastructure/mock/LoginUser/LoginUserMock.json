@@ -1,0 +1,11 @@
+{
+  "data": [
+    {
+      "codtipo": 2,
+      "tipo": "Expropiación"
+    }
+  ],
+  "message": "A consulta foi realizada correctamente.",
+  "status": "succes",
+  "code": 200
+}

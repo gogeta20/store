@@ -1,5 +1,5 @@
 import { CategoryGetUseCase } from '../useCase/CategoryGetUseCase.js';
-// import type { Article } from "~/src/main/domain/entity/Article";
+// import type { Article } from "@/main/domain/entity/Article";
 
 export default {
   async send(dataSend) {

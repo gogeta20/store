@@ -1,21 +1,21 @@
 import { LoginPostRepository } from '../../infrastructure/repositories/LoginPostRepository';
-import type { User } from "~/src/main/domain/entity/User";
+import type { User } from "@/main/domain/entity/User";
+import { userAppStore } from '~/stores/user';
+const userStore = userAppStore();
 
 export class LoginPostUseCase {
 
   async execute(dataSend: User) {
-    const loginRepository = new LoginPostRepository();
-
     this.verifyData(dataSend);
 
-    await loginRepository.send(dataSend);
+    const loginRepository = new LoginPostRepository();
+    const response = await loginRepository.send(dataSend);
+    userStore.setDataLogin(response);
   }
 
   private verifyData(dataSend: User) {
-
     if (!dataSend.user || !dataSend.pass) {
       throw new Error('Invalid post data');
     }
-
   }
 }

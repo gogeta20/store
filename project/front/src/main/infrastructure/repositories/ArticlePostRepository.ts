@@ -1,6 +1,6 @@
-import type { IPostRepository } from "~/src/main/domain/repositories/IPostRepository";
-import type { Article } from "~/src/main/domain/entity/Article";
-import { api } from "~/src/core/http/Api";
+import type { IPostRepository } from "@/main/domain/repositories/IPostRepository";
+import type { Article } from "@/main/domain/entity/Article";
+import { api } from "@/core/http/Api";
 
 export class ArticlePostRepository implements IPostRepository {
 

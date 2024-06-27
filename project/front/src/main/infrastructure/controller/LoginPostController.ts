@@ -1,5 +1,5 @@
-import { LoginPostUseCase } from '../useCase/LoginPostUseCase';
-import type { User } from "~/src/main/domain/entity/User";
+import { LoginPostUseCase } from '@/main/application/useCase/LoginPostUseCase';
+import type { User } from "@/main/domain/entity/User";
 const toastStore = toastAppStore();
 
 export default {
@@ -9,17 +9,16 @@ export default {
     try {
       await loginPostUseCase.execute(dataSend);
       toastStore.onShowToast({
-        title: "title test",
-        message: 'test toast',
+        title: "Usuario logeado correctamente",
+        message: '',
         type: "success",
         code: 200,
         life: 3000
       });
-    } catch (error) {
-      const er = error as Error;
+    } catch (error: Error | any) {
       toastStore.onShowToast({
-        title: er.name,
-        message: er.message,
+        title: "Error en al intentar logearse",
+        message: error.status,
         type: "danger",
         code: 200,
         life: 3000

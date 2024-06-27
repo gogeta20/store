@@ -4,13 +4,14 @@ definePageMeta({
   layout: false,
 });
 import TitleArticle from '~/components/Article/TitleArticle.vue';
-import LoginController from '~/src/main/application/controller/LoginPostController';
+import LoginController from '~/src/main/infrastructure/controller/LoginPostController';
 import { userAppStore } from '~/stores/user';
 import { UtilHelper } from '~/src/core/utilities/UtilHelper';
 import Toast from '~/components/Toast/Toast.vue';
 const toastStore = toastAppStore();
 const userStore = userAppStore();
 const errorMsg = ref(false)
+
 const user = ref({
   username: '',
   password: '',
@@ -25,13 +26,6 @@ const login = async () => {
     });
   } else {
     errorMsg.value = true
-    toastStore.onShowToast({
-      title: "Error",
-      message: 'Rellena correctamente los campos',
-      type: "info",
-      code: 200,
-      life: 6000
-    });
   }
 };
 
@@ -55,8 +49,8 @@ function reset() {
         <InputBasic id-input="user" label="Usuario" v-model="user.username"></InputBasic>
         <InputBasic id-input="pass" label="Contraseña" v-model="user.password"></InputBasic>
         <button class="btn btn-outline-info" @click.prevent="login">Enviar</button>
-        <div v-if="errorMsg" class="bg-danger bg-error">
-          Error en el formulario
+        <div v-if="errorMsg" class="bg-danger bg-error input-error">
+          Rellena correctamente los campos
           <i @click="reset" class="fa-solid fa-eye-slash"></i>
         </div>
       </div>
@@ -67,6 +61,12 @@ function reset() {
 <!--  -->
 <!--  -->
 <style scoped lang="scss">
+.input-error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container-login {
   width: 100%;
   height: 100vh;

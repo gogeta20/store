@@ -1,5 +1,5 @@
 import { CreateArticlePostUseCase } from '../useCase/CreateArticlePostUseCase.js';
-import type { Article } from "~/src/main/domain/entity/Article";
+import type { Article } from "@/main/domain/entity/Article";
 const toastStore = toastAppStore();
 
 export default {

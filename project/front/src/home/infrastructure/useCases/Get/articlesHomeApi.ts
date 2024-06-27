@@ -1,4 +1,4 @@
-import { api } from "~/src/core/http/Api";
+import { api } from "@/core/http/Api";
 
 async function articlesHomeInMemory() {
   // await UtilHelper.wait(500);

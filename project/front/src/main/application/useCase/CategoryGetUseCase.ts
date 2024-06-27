@@ -1,5 +1,5 @@
 import { CategoryGetRepository } from '../../infrastructure/repositories/CategoryGetRepository.js';
-// import type { Article } from "~/src/main/domain/entity/Article";
+// import type { Article } from "@/main/domain/entity/Article";
 
 export class CategoryGetUseCase {
 

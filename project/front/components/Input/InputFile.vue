@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, defineProps, defineEmits } from "vue";
-import type { FileImgList } from "~/src/main/domain/Notice";
+import type { FileImgList } from "@/main/domain/Notice";
 const props = defineProps({
   idInput: {
     type: String,

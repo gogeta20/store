@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     },
   },
   css: [
-    '@/assets/bootstrap/main.scss',
+    '~/assets/bootstrap/main.scss',
   ],
   runtimeConfig: {
     apiSecret: '123',
@@ -22,4 +22,7 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@pinia/nuxt', 'nuxt-primevue', "nuxt-tiptap-editor"],
+  alias: {
+    '@': '~/src'
+  }
 });
