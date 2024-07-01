@@ -8,9 +8,9 @@ use App\Main\Domain\Model\TblAutor;
 use App\Main\Domain\Model\TblCategoria;
 use App\Main\Domain\Model\TblEtiqueta;
 use App\Main\Domain\Model\TblImagen;
-use App\Main\Domain\Model\TblUsuario;
 use App\Main\Domain\Repository\Interfaces\Health\FakerInterface;
 use App\Shared\Infrastructure\BaseDoctrine;
+use App\User\Domain\Model\TblUsuario;
 use Faker\Factory;
 
 class EntityFakerRepository extends BaseDoctrine implements FakerInterface

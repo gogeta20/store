@@ -4,20 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Main\Infrastructure\Repository\Article;
 
-use App\Main\Application\Controller\Article\NewArticleRequest;
-use App\Main\Domain\Exception\StoreException;
-use App\Main\Infrastructure\Repository\Article\NewArticleRepository;
 use App\Main\Domain\Model\TblArticulo;
 use App\Main\Domain\Model\TblAutor;
 use App\Main\Domain\Model\TblImagen;
+use App\Main\Infrastructure\Repository\Article\NewArticleRepository;
 use App\Tests\Shared\Domain\UuidWrapper;
 use App\Tests\Shared\Infrastructure\Symfony\BaseTestCase;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use PHPUnit\Framework\MockObject\Exception;
-use PHPUnit\Framework\TestCase;
-use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class NewArticleRepositoryTest extends BaseTestCase
 {

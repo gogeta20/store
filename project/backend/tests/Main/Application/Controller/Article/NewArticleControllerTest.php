@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Main\Application\Controller\Article;
 
+use App\Main\Domain\Exception\StoreException;
+use App\Main\Infrastructure\Controller\Article\NewArticleController;
+use App\Main\Infrastructure\Controller\Article\NewArticleRequest;
 use App\Shared\Domain\Bus\Command\CommandBus;
 use App\Shared\Domain\Bus\Query\QueryBus;
 use App\Shared\Domain\Interfaces\ParamsRequestInterface;
@@ -11,10 +14,7 @@ use App\Shared\Domain\Interfaces\TranslateInterfaceCustom;
 use App\Shared\Domain\Parameters;
 use App\Shared\Infrastructure\Symfony\ApiExceptionsHttpStatusCodeMapping;
 use App\Tests\Shared\Infrastructure\Symfony\BaseTestCase;
-use App\Main\Application\Controller\Article\NewArticleRequest;
 use PHPUnit\Framework\MockObject\Exception;
-use App\Main\Application\Controller\Article\NewArticleController;
-use App\Main\Domain\Exception\StoreException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

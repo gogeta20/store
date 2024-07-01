@@ -1,21 +1,25 @@
 <?php
-declare(strict_types=1);
-namespace App\Main\Application\Controller\Article;
 
-use App\Main\Application\UseCases\Command\Article\NewArticle\NewArticleCommand;
+declare(strict_types=1);
+
+namespace App\User\Infrastructure\Controller\Login;
+
 use App\Main\Domain\Exception\StoreException;
 use App\Main\Infrastructure\Response\JsonApiResponse;
 use App\Shared\Application\AppConstants;
 use App\Shared\Infrastructure\Symfony\ApiController;
+use App\User\Application\UseCases\Login\LoginCommand;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class NewArticleController extends ApiController
+
+class LoginController extends ApiController
 {
+
     /**
      * @throws StoreException
      */
-    public function __invoke(NewArticleRequest $request): JsonResponse
+    public function __invoke(LoginRequest $request): JsonResponse
     {
         $errors = $request->validate();
 
@@ -24,11 +28,8 @@ class NewArticleController extends ApiController
         }
 
         try {
-            $this->dispatch(NewArticleCommand::create(
-                    $request->data(),
-                    $request->files(),
-                    $this->configurationParams->get('upload_dir')
-                )
+            $this->dispatch(
+                LoginCommand::create($request->data())
             );
         }catch (\Exception $exception){
             throw new StoreException($exception->getMessage());
@@ -40,8 +41,7 @@ class NewArticleController extends ApiController
     protected function exceptions(): array
     {
         return [
-            StoreException::class => 500,
-            Exception::class => 503,
+            Exception::class => 500,
         ];
     }
 }

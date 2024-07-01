@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Main\Domain\UseCases\Command\Health;
+namespace App\Main\Application\UseCases\Command\Health;
 
-use App\Main\Application\UseCases\Command\Health\FakerCommand;
 use App\Main\Domain\Repository\Interfaces\Health\FakerInterface;
 
 final readonly class Faker

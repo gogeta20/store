@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Main\Application\Controller\Health;
+namespace App\Main\Infrastructure\Controller\Health;
 
 use App\Main\Application\UseCases\Querys\Test\Check\CheckQuery;
 use App\Shared\Domain\BaseResponse;

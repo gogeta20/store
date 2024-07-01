@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace App\Main\Application\Controller\Home;
+namespace App\Main\Infrastructure\Controller\Home;
 
 use App\Main\Application\UseCases\Querys\Home\HomeQuery;
 use App\Main\Domain\Exception\StoreException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Main\Domain\Model;
+namespace App\User\Domain\Model;
 
 class TblUsuario
 {
