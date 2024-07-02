@@ -17,7 +17,9 @@ services:
       - /gitlab/config:/etc/gitlab
       - /gitlab/logs:/var/log/gitlab
       - /gitlab/data:/var/opt/gitlab
-#    volumes:
+      - /cert/gitlab.crt:/etc/gitlab-runner/certs/gitlab.mvm.crt
+      - ./config/gitlab.rb:/etc/gitlab/gitlab.rb
+    #    volumes:
 #      - '$GITLAB_HOME/config:/etc/gitlab'
 #      - '$GITLAB_HOME/logs:/var/log/gitlab'
 #      - '$GITLAB_HOME/data:/var/opt/gitlab'
