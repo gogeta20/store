@@ -8,7 +8,7 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
-        external_url 'https://gitlab.example.com'
+        external_url 'https://gitlab.mvm'
     ports:
       - '80:80'
       - '443:443'
@@ -22,4 +22,19 @@ services:
 #      - '$GITLAB_HOME/logs:/var/log/gitlab'
 #      - '$GITLAB_HOME/data:/var/opt/gitlab'
     shm_size: '256m'
-
+    networks:
+      - gitlab-network
+  gitlab-runner:
+      build:
+        dockerfile: runners/Dockerfile
+        context: .
+      container_name: gitlab-runner
+      restart: always
+      volumes:
+        - ./runners/config.toml:/etc/gitlab-runner/config.toml
+        - /var/run/docker.sock:/var/run/docker.sock
+      networks:
+        - gitlab-network
+networks:
+  gitlab-network:
+    driver: bridge

@@ -1,0 +1,18 @@
+[[runners]]
+  name = "runner-store"
+  url = "https://gitlab.mvm/"
+  token = "glrt-MySwuHqxtTycmtLVic4n"
+  executor = "docker"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+  [runners.docker]
+    tls_verify = false
+    image = "docker:latest"
+    privileged = true
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
+    shm_size = 0
