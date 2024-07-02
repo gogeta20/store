@@ -48,5 +48,7 @@ stages:
 
 test_job:
   stage: test
+  tags:
+    - docker
   script:
     - echo "Runner is working!"
