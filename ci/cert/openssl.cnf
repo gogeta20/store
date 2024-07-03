@@ -2,12 +2,17 @@
 distinguished_name = req_distinguished_name
 x509_extensions = v3_req
 prompt = no
+default_bits = 2048
+default_md = sha256
 
 [req_distinguished_name]
 CN = gitlab.mvm
+O = MiOrganizacion
+OU = MiUnidadOrganizativa
+emailAddress = admin@example.com
 
 [v3_req]
-keyUsage = keyEncipherment, dataEncipherment
+keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 

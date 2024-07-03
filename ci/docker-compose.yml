@@ -7,8 +7,9 @@ services:
     hostname: 'gitlab.mvm'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        # Add any other gitlab.rb configuration here, each on its own line
         external_url 'https://gitlab.mvm'
+        nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab.crt"
+        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab.key"
     ports:
       - '80:80'
       - '443:443'
@@ -17,7 +18,8 @@ services:
       - /gitlab/config:/etc/gitlab
       - /gitlab/logs:/var/log/gitlab
       - /gitlab/data:/var/opt/gitlab
-      - /cert/gitlab.crt:/etc/gitlab-runner/certs/gitlab.mvm.crt
+      - ./cert/gitlab.crt:/etc/gitlab/ssl/gitlab.crt
+      - ./cert/gitlab.key:/etc/gitlab/ssl/gitlab.key
       - ./config/gitlab.rb:/etc/gitlab/gitlab.rb
     #    volumes:
 #      - '$GITLAB_HOME/config:/etc/gitlab'
@@ -35,6 +37,7 @@ services:
       volumes:
         - ./runners/config.toml:/etc/gitlab-runner/config.toml
         - /var/run/docker.sock:/var/run/docker.sock
+        - ./cert/gitlab.crt:/etc/gitlab-runner/certs/gitlab.crt  # Montar el certificado aquí
       networks:
         - gitlab-network
 networks:
