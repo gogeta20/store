@@ -3,6 +3,7 @@
   url = "https://gitlab.mvm/"
   token = "glrt-MySwuHqxtTycmtLVic4n"
   executor = "docker"
+  tls-ca-file = "/etc/gitlab-runner/certs/gitlab.crt"
   [runners.custom_build_dir]
   [runners.cache]
     [runners.cache.s3]
