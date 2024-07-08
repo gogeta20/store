@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   gitlab:
-    image: gitlab/gitlab-ce:17.0.0-ce.0
+    image: gitlab/gitlab-ce:17.1.0-ce.0
     container_name: gitlab
     restart: always
     hostname: 'gitlab.mvm'
@@ -23,7 +23,7 @@ services:
       - ./config/gitlab.rb:/etc/gitlab/gitlab.rb
     #    volumes:
 #      - '$GITLAB_HOME/config:/etc/gitlab'
-#      - '$GITLAB_HOME/logs:/var/log/gitlab'
+#      - '$GITLAB_HOME/logs:/var/log/gitlab's
 #      - '$GITLAB_HOME/data:/var/opt/gitlab'
     shm_size: '256m'
     networks:

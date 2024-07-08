@@ -1,13 +1,18 @@
-FROM gitlab/gitlab-runner:latest
+FROM gitlab/gitlab-runner:v17.1.0
 
-# Copiar el certificado al contenedor
+USER root
+
+# Instalación de herramientas y certificados
+RUN apt-get update && \
+    apt-get install -y vim iputils-ping dnsutils curl && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY ./cert/gitlab.crt /usr/local/share/ca-certificates/gitlab.crt
-
-# Actualizar el almacén de certificados
 RUN update-ca-certificates
 
-# Instalar herramientas de red
-RUN apt-get update && apt-get install -y dnsutils curl
+# Configuración del editor por defecto
+ENV EDITOR=/usr/bin/vim
 
+# Entrypoint y CMD
 ENTRYPOINT ["/usr/bin/dumb-init", "/entrypoint"]
 CMD ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
