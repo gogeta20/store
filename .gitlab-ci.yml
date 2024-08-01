@@ -1,0 +1,54 @@
+#stages:
+#  - build
+#  - test
+#  - deploy
+#
+## Job para construir el backend (Symfony 6)
+#build-backend:
+#  stage: build
+#  script:
+#    - echo "Building backend..."
+#    - cd project/backend
+#    - composer install
+#
+## Job para construir el frontend (Nuxt3)
+#build-frontend:
+#  stage: build
+#  script:
+#    - echo "Building frontend..."
+#    - cd project/front
+#    - npm install
+#    - npm run build
+#
+## Job para testear el backend (Symfony 6)
+#test-backend:
+#  stage: test
+#  script:
+#    - echo "Testing backend..."
+#    - cd project/backend
+#    - ./vendor/bin/phpunit
+#
+## Job para testear el frontend (Nuxt3)
+#test-frontend:
+#  stage: test
+#  script:
+#    - echo "Testing frontend..."
+#    - cd project/front
+#    - npm run test
+#
+## Job para desplegar
+#deploy:
+#  stage: deploy
+#  script:
+#    - echo "Deploying project..."
+#  only:
+#    - master
+stages:
+  - test
+
+test_job:
+  stage: test
+  tags:
+    - docker
+  script:
+    - echo "Runner is working!"
