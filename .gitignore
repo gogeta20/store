@@ -18,17 +18,19 @@
 
 #front
 **/node_modules/**
+**/.pnpm*
+**/.vscode
 **/.nuxt/**
 **dist
 **/.output/**
 
-**/zips/**
-**.zip
 
-#front
-**dist
-**/.output/**
-
+#ci
+ci/gitlab/data
+ci/gitlab/config
+*.pem
+*.ctr
+*.pub
 
 #.phpunit
 #.phpunit
