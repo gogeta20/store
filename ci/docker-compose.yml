@@ -1,0 +1,49 @@
+version: '3.6'
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:17.1.0-ce.0
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.mvm'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.mvm'
+        nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab.mvm.pem"
+        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab.mvm-key.pem"
+#        nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab.mvm.pem"
+#        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab.mvm-key.pem"
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - ./gitlab/shared:/home
+      - ./gitlab/config:/etc/gitlab
+      - ./gitlab/logs:/var/log/gitlab
+      - ./gitlab/data:/var/opt/gitlab
+      - ./cert/gitlab.mvm.pem:/etc/gitlab/ssl/gitlab.mvm.pem
+      - ./cert/gitlab.mvm-key.pem:/etc/gitlab/ssl/gitlab.mvm-key.pem
+      - ./config/gitlab.rb:/etc/gitlab/gitlab.rb
+    #    volumes:
+#      - '$GITLAB_HOME/config:/etc/gitlab'
+#      - '$GITLAB_HOME/logs:/var/log/gitlab's
+#      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+    networks:
+      - gitlab-network
+  gitlab-runner:
+      build:
+        dockerfile: runners/Dockerfile
+        context: .
+      container_name: gitlab-runner
+      restart: always
+      volumes:
+        - ./runners/config.toml:/etc/gitlab-runner/config.toml
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./cert/gitlab.mvm.pem:/etc/gitlab-runner/certs/gitlab.mvm.pem # Montar el certificado aquí
+#        - ./cert/rootCA.pem:/etc/gitlab-runner/certs/rootCA.pem # Certificado raíz
+      networks:
+        - gitlab-network
+networks:
+  gitlab-network:
+    driver: bridge
