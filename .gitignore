@@ -18,9 +18,9 @@
 
 #front
 **/node_modules/**
-**/.pnpm*
-**/.vscode
 **/.nuxt/**
 **dist
 **/.output/**
 **/gitlab/**
+**/.pnpm*
+**/.vscode**

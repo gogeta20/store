@@ -41,7 +41,7 @@ services:
         - ./runners/config.toml:/etc/gitlab-runner/config.toml
         - /var/run/docker.sock:/var/run/docker.sock
         - ./cert/gitlab.mvm.pem:/etc/gitlab-runner/certs/gitlab.mvm.pem # Montar el certificado aquí
-#        - ./cert/rootCA.pem:/etc/gitlab-runner/certs/rootCA.pem # Certificado raíz
+        - ./cert/rootCA.pem:/etc/gitlab-runner/certs/rootCA.pem # Certificado raíz
       networks:
         - gitlab-network
 networks:
