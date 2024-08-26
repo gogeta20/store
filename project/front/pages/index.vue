@@ -146,7 +146,7 @@ onMounted(()=>{
             <ul id="listProjects" class="list-items" v-show=" showProjectList || showProjectListPc">
               <li class="projectItem btn-three">
                 <div class="name-project">ApoloArte</div>
-                <div class="info">Código a medida para Wordpress</div>
+                <div class="info">Código a medida para Wordpress mau</div>
               </li>
               <li class="projectItem btn-three">
                 <div class="name-project">Fiordilatte</div>
