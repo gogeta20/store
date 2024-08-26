@@ -1,0 +1,31 @@
+body {
+  /* position: relative; */
+  /* padding-bottom: 8rem; */
+  min-height: 100vh;
+  background-color: aqua !important;
+}
+
+.kode-mono-regular {
+  font-family: 'Kode Mono', monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: none;
+  line-height: initial;
+}
+.kode-mono-bold {
+  font-family: 'Kode Mono', monospace;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.bd-subnavbar {
+  position: -webkit-sticky;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  font-size: 2rem;
+}
+
+
