@@ -322,6 +322,11 @@ onMounted(()=>{
                   <i class="bi bi-filetype-pdf"></i>Descargar Curriculum vitae
                 </a>
               </div>
+                <div class="mb-5">
+                    <a class="linkedin-enlace" href="/MauricioVargasAts.pdf" download>
+                        <i class="bi bi-filetype-pdf"></i>Descargar CV ATS
+                    </a>
+                </div>
             </ul>
           </div>
         </div>
